@@ -32,6 +32,30 @@ Research Layer tool stack
     └── Xpoz / ClawHub Instagram Search: Instagram keyword/content search
 ```
 
+
+## Research Layer Operational Kit
+
+Research Layer v1 is considered operational when these files are present and used together:
+
+```text
+Research Layer kit
+├── agents/instagrow-research-operator.md
+├── playbooks/instagram-research-layer.md
+├── playbooks/cross-platform-research.md
+├── sops/manual-research-run.md
+├── sops/research-api-credential-checklist.md
+├── templates/research-brief.md
+├── templates/research-report.md
+└── data/
+    ├── hook-bank.md                  # data/hook-bank.md
+    ├── competitor-map.md             # data/competitor-map.md
+    ├── content-opportunities.md      # data/content-opportunities.md
+    ├── keyword-bank.md               # data/keyword-bank.md
+    └── research-source-log.md        # data/research-source-log.md
+```
+
+Use `templates/research-brief.md` at the start of a run, `templates/research-report.md` at the end, and update the `data/` files whenever a finding should survive beyond the current task.
+
 ## Mode 1 — Hermes-Native Manual Research
 
 Use this mode when API keys are not configured yet.

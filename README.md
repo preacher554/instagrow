@@ -39,13 +39,18 @@ InstaGrow workflow
 ├── 1. Research Layer
 │   ├── Hermes-native mode: browser + vision + web + terminal/Python + repo files + subagents
 │   ├── API-assisted mode: Apify + Xpoz when credentials are provided
+│   ├── data stores: hook bank + competitor map + opportunities + keyword bank + source log
 │   └── Instagram + X/Twitter + TikTok + YouTube + web/forum signals
-├── 2. Content Layer
-│   └── Reels + carousels + Stories + captions + CTAs
-├── 3. Experiment Layer
-│   └── hypothesis → metric target → result → decision
-└── 4. Future Automation Layer
-    └── analytics, scheduler, publishing, database, agent workers
+├── 2. Content System Layer
+│   └── content pillars → idea backlog → content briefs → weekly calendar
+├── 3. Creative Production Layer
+│   └── scripts → carousel copy → visual direction → editing/asset checklist
+├── 4. Publishing Layer
+│   └── generate-only/manual posting → scheduler/API later → posting QA
+├── 5. Engagement Layer
+│   └── warm-up → comment/DM response → Story interactions → relationship loops
+└── 6. Analytics + Learning Layer
+    └── metrics → experiment log → lessons learned → playbook updates
 ```
 
 ## Repository Structure
@@ -56,7 +61,8 @@ Current working structure:
 instagrow/
 ├── README.md
 ├── agents/
-│   └── instagrow-agent.md              # Main specialist-agent instruction layer
+│   ├── instagrow-agent.md              # Main specialist-agent instruction layer
+│   └── instagrow-research-operator.md  # Dedicated Research Layer operator
 ├── playbooks/
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
@@ -65,9 +71,17 @@ instagrow/
 ├── sops/
 │   ├── weekly-content-cycle.md         # Weekly execution rhythm
 │   ├── experiment-log.md               # Experiment tracking format
+│   ├── manual-research-run.md          # Hermes-native no-key research SOP
 │   └── research-api-credential-checklist.md # When/how to request Apify + Xpoz credentials
+├── data/
+│   ├── hook-bank.md                    # Reusable hooks and rewrites
+│   ├── competitor-map.md               # Competitor/creator monitoring map
+│   ├── content-opportunities.md        # Scored opportunity backlog
+│   ├── keyword-bank.md                 # SEO/search/pain keywords
+│   └── research-source-log.md          # Source notes and evidence trail
 └── templates/
     ├── research-brief.md
+    ├── research-report.md
     ├── reel-brief.md
     ├── carousel-brief.md
     └── story-sequence.md
@@ -127,11 +141,22 @@ When creating an InstaGrow-focused agent, load:
 2. `playbooks/account-status-routing.md`
 3. `playbooks/instagram-operations.md`
 4. `playbooks/instagram-research-layer.md`
-5. `playbooks/cross-platform-research.md`
-6. Relevant template from `templates/`
+5. `agents/instagrow-research-operator.md` when running research
+6. `playbooks/cross-platform-research.md`
+7. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
 ## Status
 
-Initial foundation. This repo is designed to evolve as GrowthForge develops stronger Instagram systems and real account data comes in.
+Research Layer v1 foundation is complete and now has an operational kit: dedicated research operator, manual no-key SOP, data stores, credential checklist, and report templates.
+
+Next build targets:
+
+1. Content System Layer.
+2. Creative Production Layer.
+3. Publishing Layer.
+4. Engagement Layer.
+5. Analytics + Learning Layer.
+
+This repo is designed to evolve as GrowthForge develops stronger Instagram systems and real account data comes in.

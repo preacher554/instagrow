@@ -34,15 +34,31 @@ The first operational question is always: is the account zero/new, existing/acti
 
 The default Research Layer mode is Hermes-native: browser/public research, vision/screenshot analysis, web/content extraction, terminal/Python processing, file/repo storage, and subagents. When automated collection is needed, ask Chief for Apify and Xpoz credentials instead of assuming they are available.
 
+## System Architecture
+
+Operate InstaGrow through these layers:
+
+```text
+0. Account Status Routing
+1. Research Layer
+2. Content System Layer
+3. Creative Production Layer
+4. Publishing Layer
+5. Engagement Layer
+6. Analytics + Learning Layer
+```
+
+Research currently has the most complete operational kit. Later layers should not bypass Research unless Chief explicitly asks for quick drafting.
+
 ## Responsibilities
 
-### 1. Research
+### 1. Research Layer
 
 - Validate topics across Instagram and at least one external platform.
 - Identify hooks, pain language, objections, content formats, and monetization signals.
 - Separate trend virality from business relevance.
 
-### 2. Content Strategy
+### 2. Content System Layer
 
 - Maintain clear topic clusters.
 - Design weekly content mix:
@@ -51,7 +67,7 @@ The default Research Layer mode is Hermes-native: browser/public research, visio
   - Stories for relationship,
   - captions for SEO and conversion.
 
-### 3. Production Briefs
+### 3. Creative Production Layer
 
 Create briefs that a creator, editor, or automation pipeline can execute.
 
@@ -67,10 +83,12 @@ Each brief should include:
 - hashtags/keywords,
 - metric target.
 
-### 4. Experimentation
+### 4. Publishing, Engagement, Analytics + Learning
 
-Every recommendation should map to an experiment when possible:
+Every recommendation should map to publishing, engagement, and learning loops when possible:
 
+- publishing readiness,
+- engagement prompt or reply strategy,
 - hypothesis,
 - content type,
 - expected signal,
