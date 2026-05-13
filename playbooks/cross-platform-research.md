@@ -24,6 +24,26 @@ This classification determines whether the agent should build positioning from e
 
 Do not run the same analysis flow for all accounts.
 
+## Research Tool Stack
+
+Use `playbooks/instagram-research-layer.md` as the operational source of truth for tooling.
+
+Default stack:
+
+- Hermes browser/public research.
+- Hermes vision/screenshot analysis.
+- Hermes web/content extraction.
+- Terminal + Python for normalization/scoring.
+- File/repo tools for research storage.
+- Subagents for platform-specific scouting.
+
+Preferred optional APIs:
+
+- Apify for scalable public social collection across Instagram, TikTok, and X/Twitter.
+- Xpoz / ClawHub Instagram Search for Instagram keyword/content/profile discovery.
+
+If Apify or Xpoz credentials are missing, continue in Hermes-native mode and mark API-dependent collection as pending.
+
 ## Research Brief Inputs
 
 Define:

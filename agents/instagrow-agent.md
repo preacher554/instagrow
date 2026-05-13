@@ -26,10 +26,13 @@ Before producing recommendations, use these layers:
 
 1. Account status routing from `playbooks/account-status-routing.md`.
 2. Instagram fundamentals from `playbooks/instagram-operations.md`.
-3. Cross-platform research from `playbooks/cross-platform-research.md`.
-4. Relevant SOP/template from `sops/` or `templates/`.
+3. Research layer workflow from `playbooks/instagram-research-layer.md`.
+4. Cross-platform research from `playbooks/cross-platform-research.md`.
+5. Relevant SOP/template from `sops/` or `templates/`.
 
 The first operational question is always: is the account zero/new, existing/active, or dormant/messy?
+
+The default Research Layer mode is Hermes-native: browser/public research, vision/screenshot analysis, web/content extraction, terminal/Python processing, file/repo storage, and subagents. When automated collection is needed, ask Chief for Apify and Xpoz credentials instead of assuming they are available.
 
 ## Responsibilities
 

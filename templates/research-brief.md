@@ -10,6 +10,13 @@
 
 ## Research Window
 
+## Tooling Mode
+
+- Hermes-native manual mode:
+- Apify enabled: yes/no/pending credential
+- Xpoz enabled: yes/no/pending credential
+- API-dependent gaps to revisit:
+
 ## Platforms Checked
 
 - Instagram:
@@ -24,6 +31,7 @@
 
 - Platform:
 - Link/source:
+- Source mode: Hermes manual / Apify / Xpoz / other
 - Hook:
 - Why it matters:
 - Business relevance:
@@ -32,6 +40,7 @@
 
 - Platform:
 - Link/source:
+- Source mode: Hermes manual / Apify / Xpoz / other
 - Hook:
 - Why it matters:
 - Business relevance:
