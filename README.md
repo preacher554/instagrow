@@ -37,6 +37,8 @@ InstaGrow workflow
 │   └── Dormant / Messy Account
 │       └── revive vs pivot vs reset decision → recovery plan
 ├── 1. Research Layer
+│   ├── Hermes-native mode: browser + vision + web + terminal/Python + repo files + subagents
+│   ├── API-assisted mode: Apify + Xpoz when credentials are provided
 │   └── Instagram + X/Twitter + TikTok + YouTube + web/forum signals
 ├── 2. Content Layer
 │   └── Reels + carousels + Stories + captions + CTAs
@@ -58,10 +60,12 @@ instagrow/
 ├── playbooks/
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
-│   └── cross-platform-research.md      # Research workflow before content production
+│   ├── instagram-research-layer.md     # Research workflow, Hermes-native stack, Apify/Xpoz adapters
+│   └── cross-platform-research.md      # Cross-platform research workflow before content production
 ├── sops/
 │   ├── weekly-content-cycle.md         # Weekly execution rhythm
-│   └── experiment-log.md               # Experiment tracking format
+│   ├── experiment-log.md               # Experiment tracking format
+│   └── research-api-credential-checklist.md # When/how to request Apify + Xpoz credentials
 └── templates/
     ├── research-brief.md
     ├── reel-brief.md
@@ -122,8 +126,9 @@ When creating an InstaGrow-focused agent, load:
 1. `agents/instagrow-agent.md`
 2. `playbooks/account-status-routing.md`
 3. `playbooks/instagram-operations.md`
-4. `playbooks/cross-platform-research.md`
-5. Relevant template from `templates/`
+4. `playbooks/instagram-research-layer.md`
+5. `playbooks/cross-platform-research.md`
+6. Relevant template from `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
