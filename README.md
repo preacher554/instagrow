@@ -1,6 +1,6 @@
-# GrowthForge Instagram
+# InstaGrow
 
-GrowthForge Instagram is the dedicated operating repository for Instagram growth skills, agent instructions, research workflows, and repeatable SOPs.
+InstaGrow is the GrowthForge operating repository for Instagram growth skills, agent instructions, research workflows, and repeatable SOPs.
 
 Its purpose is simple: when Yuya spawns or directs an Instagram-focused subagent, this repo becomes the source of truth.
 
@@ -25,15 +25,36 @@ Build a reusable Instagram growth system for GrowthForge that can:
 - Research must be cross-platform: Instagram, X/Twitter, TikTok, YouTube, and web/forum pain language.
 - Analysis must start by classifying account status: zero/new, existing/active, or dormant/messy.
 
+## Workflow Map
+
+```text
+InstaGrow workflow
+├── 0. Account Status Routing
+│   ├── Zero / New Account
+│   │   └── niche research → positioning → content pillars → launch experiments
+│   ├── Existing / Active Account
+│   │   └── current niche audit → winner/loser analysis → bottleneck diagnosis → optimization
+│   └── Dormant / Messy Account
+│       └── revive vs pivot vs reset decision → recovery plan
+├── 1. Research Layer
+│   └── Instagram + X/Twitter + TikTok + YouTube + web/forum signals
+├── 2. Content Layer
+│   └── Reels + carousels + Stories + captions + CTAs
+├── 3. Experiment Layer
+│   └── hypothesis → metric target → result → decision
+└── 4. Future Automation Layer
+    └── analytics, scheduler, publishing, database, agent workers
+```
+
 ## Repository Structure
 
 Current working structure:
 
 ```text
-growthforge-instagram/
+instagrow/
 ├── README.md
 ├── agents/
-│   └── instagram-agent.md              # Main specialist-agent instruction layer
+│   └── instagrow-agent.md              # Main specialist-agent instruction layer
 ├── playbooks/
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
@@ -51,22 +72,22 @@ growthforge-instagram/
 Target evolution as the system matures:
 
 ```text
-growthforge-instagram/
+instagrow/
 ├── README.md
 ├── agents/
-│   ├── instagram-agent.md
-│   ├── instagram-research-operator.md
-│   ├── instagram-content-operator.md
-│   └── instagram-analytics-operator.md
+│   ├── instagrow-agent.md
+│   ├── instagrow-research-operator.md
+│   ├── instagrow-content-operator.md
+│   └── instagrow-analytics-operator.md
 ├── skills/
 │   └── social-media/
-│       ├── instagram-operations-playbook/
+│       ├── instagrow-operations-playbook/
 │       │   └── SKILL.md
-│       ├── cross-platform-social-research/
+│       ├── instagrow-cross-platform-research/
 │       │   └── SKILL.md
-│       ├── instagram-account-status-routing/
+│       ├── instagrow-account-status-routing/
 │       │   └── SKILL.md
-│       └── instagram-growth-operator/
+│       └── instagrow-growth-operator/
 │           └── SKILL.md
 ├── playbooks/
 │   ├── account-status-routing.md
@@ -96,9 +117,9 @@ growthforge-instagram/
 
 ## First Use
 
-When creating an Instagram-focused agent, load:
+When creating an InstaGrow-focused agent, load:
 
-1. `agents/instagram-agent.md`
+1. `agents/instagrow-agent.md`
 2. `playbooks/account-status-routing.md`
 3. `playbooks/instagram-operations.md`
 4. `playbooks/cross-platform-research.md`
