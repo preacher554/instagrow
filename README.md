@@ -27,21 +27,71 @@ Build a reusable Instagram growth system for GrowthForge that can:
 
 ## Repository Structure
 
+Current working structure:
+
 ```text
-agents/
-  instagram-agent.md          # Main specialist-agent instruction layer
-playbooks/
-  account-status-routing.md    # First-step routing: zero/new vs existing/active vs dormant/messy
-  instagram-operations.md      # Instagram fundamentals and operating rules
-  cross-platform-research.md   # Research workflow before content production
-sops/
-  weekly-content-cycle.md     # Weekly execution rhythm
-  experiment-log.md           # Experiment tracking format
-templates/
-  reel-brief.md
-  carousel-brief.md
-  story-sequence.md
-  research-brief.md
+growthforge-instagram/
+├── README.md
+├── agents/
+│   └── instagram-agent.md              # Main specialist-agent instruction layer
+├── playbooks/
+│   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
+│   ├── instagram-operations.md         # Instagram fundamentals and operating rules
+│   └── cross-platform-research.md      # Research workflow before content production
+├── sops/
+│   ├── weekly-content-cycle.md         # Weekly execution rhythm
+│   └── experiment-log.md               # Experiment tracking format
+└── templates/
+    ├── research-brief.md
+    ├── reel-brief.md
+    ├── carousel-brief.md
+    └── story-sequence.md
+```
+
+Target evolution as the system matures:
+
+```text
+growthforge-instagram/
+├── README.md
+├── agents/
+│   ├── instagram-agent.md
+│   ├── instagram-research-operator.md
+│   ├── instagram-content-operator.md
+│   └── instagram-analytics-operator.md
+├── skills/
+│   └── social-media/
+│       ├── instagram-operations-playbook/
+│       │   └── SKILL.md
+│       ├── cross-platform-social-research/
+│       │   └── SKILL.md
+│       ├── instagram-account-status-routing/
+│       │   └── SKILL.md
+│       └── instagram-growth-operator/
+│           └── SKILL.md
+├── playbooks/
+│   ├── account-status-routing.md
+│   ├── instagram-research-layer.md
+│   ├── instagram-content-layer.md
+│   ├── instagram-analytics-layer.md
+│   └── instagram-automation-layer.md
+├── sops/
+│   ├── weekly-content-cycle.md
+│   ├── experiment-log.md
+│   ├── existing-account-audit.md
+│   ├── zero-account-launch.md
+│   └── dormant-account-revival.md
+├── templates/
+│   ├── research-brief.md
+│   ├── content-brief.md
+│   ├── weekly-report.md
+│   ├── experiment-log.md
+│   ├── reel-brief.md
+│   ├── carousel-brief.md
+│   └── story-sequence.md
+├── evaluations/
+│   └── clawhub-instagram-analyzer-review.md
+└── scripts/
+    └── validate_skills.py
 ```
 
 ## First Use
