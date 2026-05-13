@@ -23,6 +23,7 @@ Build a reusable Instagram growth system for GrowthForge that can:
 - Likes are not enough. Track retention, saves, shares, comments, profile visits, and conversion signals.
 - GrowthForge content must serve business leverage, not vanity virality.
 - Research must be cross-platform: Instagram, X/Twitter, TikTok, YouTube, and web/forum pain language.
+- Analysis must start by classifying account status: zero/new, existing/active, or dormant/messy.
 
 ## Repository Structure
 
@@ -30,8 +31,9 @@ Build a reusable Instagram growth system for GrowthForge that can:
 agents/
   instagram-agent.md          # Main specialist-agent instruction layer
 playbooks/
-  instagram-operations.md     # Instagram fundamentals and operating rules
-  cross-platform-research.md  # Research workflow before content production
+  account-status-routing.md    # First-step routing: zero/new vs existing/active vs dormant/messy
+  instagram-operations.md      # Instagram fundamentals and operating rules
+  cross-platform-research.md   # Research workflow before content production
 sops/
   weekly-content-cycle.md     # Weekly execution rhythm
   experiment-log.md           # Experiment tracking format
@@ -47,9 +49,10 @@ templates/
 When creating an Instagram-focused agent, load:
 
 1. `agents/instagram-agent.md`
-2. `playbooks/instagram-operations.md`
-3. `playbooks/cross-platform-research.md`
-4. Relevant template from `templates/`
+2. `playbooks/account-status-routing.md`
+3. `playbooks/instagram-operations.md`
+4. `playbooks/cross-platform-research.md`
+5. Relevant template from `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 

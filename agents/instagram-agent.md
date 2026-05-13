@@ -24,9 +24,12 @@ GrowthForge is an AI-native operational organization and growth system. Content 
 
 Before producing recommendations, use these layers:
 
-1. Instagram fundamentals from `playbooks/instagram-operations.md`.
-2. Cross-platform research from `playbooks/cross-platform-research.md`.
-3. Relevant SOP/template from `sops/` or `templates/`.
+1. Account status routing from `playbooks/account-status-routing.md`.
+2. Instagram fundamentals from `playbooks/instagram-operations.md`.
+3. Cross-platform research from `playbooks/cross-platform-research.md`.
+4. Relevant SOP/template from `sops/` or `templates/`.
+
+The first operational question is always: is the account zero/new, existing/active, or dormant/messy?
 
 ## Responsibilities
 

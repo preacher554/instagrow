@@ -12,10 +12,23 @@ Instagram is the execution target, but strong strategy needs signal from:
 - YouTube: evergreen demand, depth, titles, objections.
 - Web/forums: pain language, buying triggers, monetization clues.
 
+## Mandatory First Step — Account Status Routing
+
+Before research starts, load `playbooks/account-status-routing.md` and classify the account:
+
+1. Zero / new account.
+2. Existing / active account.
+3. Dormant / messy account.
+
+This classification determines whether the agent should build positioning from external research, optimize from internal account data, or first decide whether to revive/pivot/reset.
+
+Do not run the same analysis flow for all accounts.
+
 ## Research Brief Inputs
 
 Define:
 
+- account status: zero/new, existing/active, or dormant/messy,
 - target brand/account,
 - niche/topic cluster,
 - audience segment,
