@@ -67,6 +67,7 @@ instagrow/
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
 │   ├── instagram-research-layer.md     # Research workflow, Hermes-native stack, Apify/Xpoz adapters
+│   ├── research-engine-v2.md           # ORACLE-style validation, scoring, tension, and handoff engine
 │   └── cross-platform-research.md      # Cross-platform research workflow before content production
 ├── sops/
 │   ├── weekly-content-cycle.md         # Weekly execution rhythm
@@ -82,6 +83,10 @@ instagrow/
 └── templates/
     ├── research-brief.md
     ├── research-report.md
+    ├── brand-intelligence-card.md
+    ├── content-analysis-10-plus-3.md
+    ├── opportunity-scorecard.md
+    ├── experiment-card.md
     ├── reel-brief.md
     ├── carousel-brief.md
     └── story-sequence.md
@@ -141,17 +146,18 @@ When creating an InstaGrow-focused agent, load:
 2. `playbooks/account-status-routing.md`
 3. `playbooks/instagram-operations.md`
 4. `playbooks/instagram-research-layer.md`
-5. `agents/instagrow-research-operator.md` when running research
-6. `playbooks/cross-platform-research.md`
-7. Relevant SOP/template from `sops/` or `templates/`
+5. `playbooks/research-engine-v2.md` for non-ambiguous Research Layer validation, scoring, and handoff rules
+6. `agents/instagrow-research-operator.md` when running research
+7. `playbooks/cross-platform-research.md`
+8. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
 ## Status
 
-Research Layer v1 foundation is complete and now has an operational kit: dedicated research operator, manual no-key SOP, data stores, credential checklist, and report templates.
+Research Layer v2 clarification is now added through `playbooks/research-engine-v2.md`. Research Layer remains the active build priority until the Research Engine, templates, and operator handoff are unambiguous for sub-agents.
 
-Next build targets:
+Next build targets after Research Layer v2 is stable:
 
 1. Content System Layer.
 2. Creative Production Layer.

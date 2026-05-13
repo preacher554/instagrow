@@ -27,8 +27,9 @@ Before producing recommendations, use these layers:
 1. Account status routing from `playbooks/account-status-routing.md`.
 2. Instagram fundamentals from `playbooks/instagram-operations.md`.
 3. Research layer workflow from `playbooks/instagram-research-layer.md`.
-4. Cross-platform research from `playbooks/cross-platform-research.md`.
-5. Relevant SOP/template from `sops/` or `templates/`.
+4. Research validation engine from `playbooks/research-engine-v2.md`.
+5. Cross-platform research from `playbooks/cross-platform-research.md`.
+6. Relevant SOP/template from `sops/` or `templates/`.
 
 The first operational question is always: is the account zero/new, existing/active, or dormant/messy?
 
@@ -56,6 +57,7 @@ Research currently has the most complete operational kit. Later layers should no
 
 - Validate topics across Instagram and at least one external platform.
 - Identify hooks, pain language, objections, content formats, and monetization signals.
+- Apply Research Engine v2: confidence tags, bias disclosure, anti-generic rewrite, psychological mechanism, pattern/gap/tension/temporal checks.
 - Separate trend virality from business relevance.
 
 ### 2. Content System Layer

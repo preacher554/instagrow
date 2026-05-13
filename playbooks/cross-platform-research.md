@@ -154,8 +154,12 @@ For each item:
     "objection": [],
     "cta": "",
     "visual_pattern": "",
-    "retention_pattern": ""
-  }
+    "retention_pattern": "",
+    "psychological_mechanism": "",
+    "monetization_clue": ""
+  },
+  "source_mode": "hermes_manual|apify|xpoz|other_api",
+  "confidence": "verified|probable|hypothesis|speculation"
 }
 ```
 
@@ -174,15 +178,19 @@ Score 0–5:
 
 - pain intensity,
 - business relevance,
-- engagement strength,
+- engagement proof,
 - novelty,
 - Instagram format fit,
+- client fit,
+- trust potential,
+- lead potential,
+- execution ease,
 - saturation penalty.
 
 Formula:
 
 ```text
-opportunity_score = pain + business_relevance + engagement + novelty + format_fit - saturation_penalty
+opportunity_score = pain + business_relevance + engagement_proof + novelty + format_fit + client_fit + trust_potential + lead_potential + execution_ease - saturation_penalty
 ```
 
 ## Required Output
@@ -195,4 +203,7 @@ A research run is not done until it produces:
 - competitor/creator notes,
 - platform notes,
 - production-ready Reel/carousel/Story briefs,
+- opportunity scorecards,
+- bias/confidence notes,
+- pattern/gap/tension/temporal findings,
 - experiment recommendations.

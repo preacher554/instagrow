@@ -35,17 +35,22 @@ Research Layer tool stack
 
 ## Research Layer Operational Kit
 
-Research Layer v1 is considered operational when these files are present and used together:
+Research Layer v2 is considered operational when these files are present and used together:
 
 ```text
 Research Layer kit
 ├── agents/instagrow-research-operator.md
 ├── playbooks/instagram-research-layer.md
+├── playbooks/research-engine-v2.md       # validation, confidence, scoring, tension, handoff rules
 ├── playbooks/cross-platform-research.md
 ├── sops/manual-research-run.md
 ├── sops/research-api-credential-checklist.md
-├── templates/research-brief.md
-├── templates/research-report.md
+├── templates/brand-intelligence-card.md  # fill before normal/deep runs
+├── templates/research-brief.md           # start-of-run scope
+├── templates/research-report.md          # end-of-run report
+├── templates/content-analysis-10-plus-3.md
+├── templates/opportunity-scorecard.md
+├── templates/experiment-card.md
 └── data/
     ├── hook-bank.md                  # data/hook-bank.md
     ├── competitor-map.md             # data/competitor-map.md
@@ -54,7 +59,7 @@ Research Layer kit
     └── research-source-log.md        # data/research-source-log.md
 ```
 
-Use `templates/research-brief.md` at the start of a run, `templates/research-report.md` at the end, and update the `data/` files whenever a finding should survive beyond the current task.
+Use `templates/brand-intelligence-card.md` and `templates/research-brief.md` at the start of a run. Use `templates/research-report.md` at the end. Use the other templates when a finding needs deeper analysis or direct handoff. Update `data/` files whenever a finding should survive beyond the current task.
 
 ## Mode 1 — Hermes-Native Manual Research
 
@@ -247,6 +252,10 @@ Score each opportunity from 0 to 5 per component:
 - `engagement_strength`: visible traction or outlier strength.
 - `novelty`: fresh angle or underused framing.
 - `instagram_format_fit`: can become a strong Reel, carousel, or Story.
+- `client_fit`: fit with brand voice, stage, account status, audience, and constraints.
+- `trust_potential`: likelihood to build authority, credibility, and relationship depth.
+- `lead_potential`: likelihood to move audience toward offer interest or conversion.
+- `execution_ease`: can the team produce it this week?
 - `saturation_penalty`: high if the topic is overused without a unique angle.
 
 Formula:
@@ -258,6 +267,10 @@ opportunity_score =
   + engagement_strength
   + novelty
   + instagram_format_fit
+  + client_fit
+  + trust_potential
+  + lead_potential
+  + execution_ease
   - saturation_penalty
 ```
 
@@ -284,7 +297,18 @@ Every research run must produce:
 - experiment backlog,
 - next actions.
 
-Use `templates/research-brief.md` as the output format.
+Use `templates/research-report.md` as the final output format. Use `templates/opportunity-scorecard.md` and `templates/experiment-card.md` for the score and learning-loop sections.
+
+## Research Engine v2 Rules
+
+For non-ambiguous sub-agent execution, also follow `playbooks/research-engine-v2.md`:
+
+- fill or assume a Brand Intelligence Card before normal/deep runs;
+- tag major claims as `[VERIFIED]`, `[PROBABLE]`, `[HYPOTHESIS]`, or `[SPECULATION]`;
+- disclose data limitations and bias;
+- rewrite generic claims with evidence, mechanism, implication, and action;
+- explain psychological mechanisms for major hooks and recommendations;
+- check pattern, gap, tension, and temporal/lifecycle status before final handoff.
 
 ## Quality Rules
 

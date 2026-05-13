@@ -1,14 +1,45 @@
 # Research Brief Template
 
+Use at the start of a research run. This is the scope contract. Final findings belong in `templates/research-report.md`.
+
 ## Research Goal
+
+- Decision needed:
+- Depth: quick scan | normal run | deep run
+- Deadline / timebox:
+
+## Brand Context
+
+- Brand name:
+- Instagram handle:
+- Account status: zero/new | existing/active | dormant/messy
+- Brand Intelligence Card filled: yes / partial / assumptions only
+- Key assumptions:
 
 ## Niche / Topic Cluster
 
+- Primary niche:
+- Sub-niche:
+- Adjacent niches:
+
 ## Audience Segment
+
+- Primary audience:
+- Audience pain:
+- Audience desire:
+- Audience sophistication:
 
 ## Offer / Monetization Path
 
+- Offer:
+- Trust path:
+- Lead/conversion path:
+
 ## Research Window
+
+- Period:
+- Region/language:
+- Platform priority:
 
 ## Tooling Mode
 
@@ -17,7 +48,7 @@
 - Xpoz enabled: yes/no/pending credential
 - API-dependent gaps to revisit:
 
-## Platforms Checked
+## Platforms to Check
 
 - Instagram:
 - X/Twitter:
@@ -25,46 +56,37 @@
 - YouTube:
 - Web/forums:
 
-## Top Signals
+## Seed Inputs
 
-### Signal 1
+- Competitors:
+- Creators:
+- Keywords:
+- Pain keywords:
+- Adjacent keywords:
 
-- Platform:
-- Link/source:
-- Source mode: Hermes manual / Apify / Xpoz / other
-- Hook:
-- Why it matters:
-- Business relevance:
+## Minimum Evidence Target
 
-### Signal 2
+- Source minimum:
+- Key examples needing 10+3 analysis:
+- Required outputs:
 
-- Platform:
-- Link/source:
-- Source mode: Hermes manual / Apify / Xpoz / other
-- Hook:
-- Why it matters:
-- Business relevance:
+## Research Questions
 
-## Opportunity Scoring
+1.
+2.
+3.
 
-### Opportunity
+## Quality Requirements
 
-- Pain intensity:
-- Business relevance:
-- Engagement strength:
-- Novelty:
-- Format fit:
-- Saturation penalty:
-- Total score:
-
-## Hook Bank
-
-## Recommended Reels
-
-## Recommended Carousels
-
-## Recommended Stories
-
-## Experiment Backlog
+- Confidence tags on major claims: yes
+- Bias disclosure: yes
+- Psychological mechanism: yes
+- Pattern/gap/tension/temporal checks: yes for normal/deep
+- Opportunity scorecards: yes
+- Experiment cards: yes
 
 ## Next Actions
+
+- Operator assigned:
+- Sub-agents needed:
+- Data stores to update:

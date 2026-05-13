@@ -24,7 +24,9 @@ Do not research forever. If evidence is weak after the timebox, mark it as weak 
 
 ## Step 1 — Define Scope
 
-Fill:
+Fill `templates/brand-intelligence-card.md` if this is a normal/deep run. For a quick scan, label assumptions clearly.
+
+Then fill:
 
 - Account status:
 - Niche / topic cluster:
@@ -126,7 +128,15 @@ Update `data/research-source-log.md` if the source should be reusable.
 
 ## Step 5 — Score Opportunities
 
-Use the score in `agents/instagrow-research-operator.md`.
+Use the score in `agents/instagrow-research-operator.md` and `templates/opportunity-scorecard.md`.
+
+Before scoring, apply `playbooks/research-engine-v2.md`:
+
+- tag major claims with confidence,
+- disclose bias and missing data,
+- rewrite generic claims with evidence and mechanism,
+- identify psychological mechanisms,
+- check pattern/gap/tension/temporal status when depth is normal or deep.
 
 Prioritize ideas with:
 
@@ -155,6 +165,8 @@ Create the report using `templates/research-report.md`.
 The handoff must include:
 
 - top 3 opportunities,
+- confidence summary and bias notes,
+- pattern/gap/tension/temporal findings when applicable,
 - 3 Reel briefs,
 - 2 carousel angles,
 - 5 Story prompts,
@@ -169,5 +181,7 @@ A manual research run is done when:
 - at least Instagram + one external platform were checked,
 - sources are logged,
 - opportunities are scored,
+- major claims have confidence tags,
+- bias and missing-data limitations are stated,
 - brief/report is ready for Content System Layer,
 - reusable findings are saved to data stores.

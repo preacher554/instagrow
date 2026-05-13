@@ -11,6 +11,7 @@ Your job is to convert raw cross-platform signals into production-ready Instagra
 Before starting, identify or infer:
 
 - Account status: zero/new, existing/active, or dormant/messy.
+- Brand Intelligence Card or labelled assumptions.
 - Target niche / topic cluster.
 - Audience segment.
 - Offer or monetization path.
@@ -51,19 +52,26 @@ Never store secrets in repo files. Use environment variables or Hermes secret co
 ```text
 Research operator sequence
 ├── 1. Classify account status
-├── 2. Define research brief
-├── 3. Build query map
-├── 4. Collect platform evidence
+├── 2. Fill Brand Intelligence Card or label assumptions
+├── 3. Define research brief
+├── 4. Build query map
+├── 5. Collect platform evidence
 │   ├── Instagram: target-platform proof
 │   ├── X/Twitter: narrative velocity and hot takes
 │   ├── TikTok: short-form pacing and hooks
 │   ├── YouTube: evergreen depth and objections
 │   └── Web/forums: pain language and monetization clues
-├── 5. Normalize sources into shared schema
-├── 6. Score opportunities
-├── 7. Extract hooks, formats, pain, objections, CTAs
-├── 8. Update data stores
-└── 9. Handoff production-ready briefs to Content System Layer
+├── 6. Normalize sources into shared schema
+├── 7. Apply Research Engine v2 validation
+│   ├── confidence tags
+│   ├── bias disclosure
+│   ├── anti-generic rewrite
+│   ├── psychological mechanism
+│   ├── pattern / gap / tension / temporal checks
+│   └── opportunity + monetization score
+├── 8. Extract hooks, formats, pain, objections, CTAs
+├── 9. Update data stores
+└── 10. Handoff production-ready briefs and experiment cards
 ```
 
 ## Minimum Evidence Standard
@@ -74,6 +82,10 @@ A research run is valid only if it includes:
 - At least 5 source notes for a small run, 15 for a normal run, 30+ for a deep run.
 - Hook or opening-frame extraction from each strong source.
 - Business relevance and monetization logic.
+- Confidence tags on major claims and recommendations.
+- Bias/data limitation disclosure.
+- Psychological mechanism for key hooks and recommendations.
+- Pattern/gap/tension/temporal checks for normal and deep runs.
 - A clear saturation judgment.
 - At least 3 recommended Reels, 2 carousels, and 5 Story prompts for a weekly handoff.
 
@@ -86,21 +98,24 @@ Score 0-5 per component:
 - `engagement_strength`: proof from visible metrics or repeated signal.
 - `novelty`: freshness or underused angle.
 - `format_fit`: ease of adapting to Reel/carousel/Story.
+- `client_fit`: fit with brand stage, voice, constraints, and account status.
+- `trust_potential`: can it build credibility and relationship depth?
+- `lead_potential`: can it move audience toward offer interest?
 - `execution_ease`: can the team produce it this week?
 - `saturation_penalty`: subtract if overused or generic.
 
 Suggested formula:
 
 ```text
-score = pain_intensity + business_relevance + engagement_strength + novelty + format_fit + execution_ease - saturation_penalty
+score = pain_intensity + business_relevance + engagement_strength + novelty + format_fit + client_fit + trust_potential + lead_potential + execution_ease - saturation_penalty
 ```
 
 Decision bands:
 
-- 22+: prioritize this week.
-- 16-21: keep in backlog / test if easy.
-- 10-15: needs sharper angle.
-- below 10: archive unless strategic context changes.
+- 32+: prioritize this week.
+- 24-31: strong test candidate.
+- 16-23: keep in backlog / sharpen angle.
+- below 16: archive unless strategic context changes.
 
 ## Required Repo Updates
 
@@ -119,13 +134,17 @@ End every report with:
 
 ```text
 Research verdict:
+Confidence summary:
 Top opportunity:
 Why now:
 Instagram adaptation:
+Psychological mechanism:
+Strategic tension:
 Recommended assets:
 - 3 Reels
 - 2 Carousels
 - 5 Stories
-Risks:
+Risks / bias:
+Experiment cards:
 Next action for Content System Layer:
 ```
