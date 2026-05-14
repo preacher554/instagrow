@@ -25,22 +25,23 @@ GrowthForge is an AI-native operational organization and growth system. Content 
 Before producing recommendations, use these layers:
 
 1. Execution gates and guardrails from `playbooks/instagrow-execution-gates-guardrails.md`.
-2. Account status routing from `playbooks/account-status-routing.md`.
-3. Instagram fundamentals from `playbooks/instagram-operations.md`.
-4. Research layer workflow from `playbooks/instagram-research-layer.md`.
-5. Research validation engine from `playbooks/research-engine-v2.md`.
-6. Cross-platform research from `playbooks/cross-platform-research.md`.
-7. Content System Layer from `playbooks/instagram-content-system-layer.md`.
-8. MUSE Copywriting Engine from `playbooks/muse-copywriting-engine.md`.
-9. Creative Production Layer from `playbooks/instagram-creative-production-layer.md`.
-10. Publishing + Analytics Layer from `playbooks/instagram-publishing-analytics-layer.md`.
-11. Relevant SOP/template from `sops/` or `templates/`.
+2. Cron learning loop from `playbooks/instagrow-cron-learning-loop.md` when recurring learning, monitoring, or scheduled analytics is involved.
+3. Account status routing from `playbooks/account-status-routing.md`.
+4. Instagram fundamentals from `playbooks/instagram-operations.md`.
+5. Research layer workflow from `playbooks/instagram-research-layer.md`.
+6. Research validation engine from `playbooks/research-engine-v2.md`.
+7. Cross-platform research from `playbooks/cross-platform-research.md`.
+8. Content System Layer from `playbooks/instagram-content-system-layer.md`.
+9. MUSE Copywriting Engine from `playbooks/muse-copywriting-engine.md`.
+10. Creative Production Layer from `playbooks/instagram-creative-production-layer.md`.
+11. Publishing + Analytics Layer from `playbooks/instagram-publishing-analytics-layer.md`.
+12. Relevant SOP/template from `sops/` or `templates/`.
 
 The first operating rule is: infer first, ask less, continue in the safest useful mode, and report only at defined gates. The first classification question is: is the account zero/new, existing/active, or dormant/messy?
 
 If no handle/client is provided, ask only for handle/client and business goal. If a handle exists, inspect public evidence before asking more. The default Research Layer mode is Hermes-native: browser/public research, vision/screenshot analysis, web/content extraction, terminal/Python processing, file/repo storage, and subagents. When automated collection is needed, ask Chief for Apify and Xpoz credentials instead of assuming they are available.
 
-The default Publishing + Analytics path avoids direct Meta Graph API. Use generate-only/manual when credentials or approval are missing, Outstand as the primary automation-first adapter, Postiz as the scheduler/calendar adapter, local Markdown/JSONL as the MVP ledger, and Notion only as optional dashboard sync. Never publish, schedule, DM, comment, or write to a connected social account without explicit approval or standing authorization.
+The default Publishing + Analytics path avoids direct Meta Graph API. Use generate-only/manual when credentials or approval are missing, Outstand as the primary automation-first adapter, Postiz as the scheduler/calendar adapter, local Markdown/JSONL as the MVP ledger, and Notion only as optional dashboard sync. Never publish, schedule, DM, comment, or write to a connected social account without explicit approval or standing authorization. For recurring improvement, use Hermes cron only for signal watching, analytics pulls, weekly learning synthesis, and playbook evolution; cron jobs must not create more cron jobs or perform live social actions without authorization.
 
 ## System Architecture
 
@@ -112,7 +113,18 @@ For every scheduled or published item, record:
 - experiment ID,
 - decision rule.
 
-### 5. Execution Gates
+### 5. Cron Learning Loop
+
+When recurring learning is needed, design cron jobs around:
+
+- daily/weekday signal watching,
+- post analytics pulls,
+- weekly learning synthesis,
+- monthly playbook evolution.
+
+Cron jobs should report only meaningful deltas, blocked states, or decisions needing Yuya. They should update local Markdown/JSONL ledgers when authorized and avoid noisy daily reports.
+
+### 6. Execution Gates
 
 Report to Yuya at:
 
@@ -126,7 +138,7 @@ Report to Yuya at:
 
 Do not stop for missing credentials, brand kit, Insights, or Notion. Use manual, draft, confidence-labeled, or local-ledger fallback modes.
 
-### 6. Engagement, Analytics + Learning
+### 7. Engagement, Analytics + Learning
 
 Every recommendation should map to engagement and learning loops when possible:
 

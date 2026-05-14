@@ -35,7 +35,8 @@ Load this skill when asked to:
 - create content briefs, Reels, carousels, Stories, or MUSE copy packages,
 - turn content briefs into creative-production packages,
 - design publishing, scheduling, analytics, or learning loops,
-- decide which API credentials/adapters are needed for InstaGrow automation.
+- decide which API credentials/adapters are needed for InstaGrow automation,
+- design Hermes cron loops for recurring signal watching, analytics pulls, weekly learning synthesis, or playbook evolution.
 
 Do not use this as a replacement for account-specific evidence. It defines the operating system; the agent still needs actual account/research data.
 
@@ -43,6 +44,7 @@ Do not use this as a replacement for account-specific evidence. It defines the o
 
 ```text
 Execution Gates & Guardrails
+Cron Learning Loop
 0. Account Status Routing
 1. Research Layer
 2. Content System Layer + MUSE Copywriting
@@ -61,6 +63,7 @@ When operating from the repo, load in this order as needed:
 ```text
 agents/instagrow-agent.md
 playbooks/instagrow-execution-gates-guardrails.md
+playbooks/instagrow-cron-learning-loop.md
 playbooks/account-status-routing.md
 playbooks/instagram-operations.md
 playbooks/instagram-research-layer.md
@@ -94,6 +97,19 @@ Publishing not approved → generate-only package
 ```
 
 Report to Yuya at intake blockers, routing gate, strategy gate, production gate, publishing gate, analytics decision gate, and exception gate. Every run must end with a concrete artifact.
+
+### Cron Learning Loop
+
+Use `playbooks/instagrow-cron-learning-loop.md` when the system needs scheduled learning. Cron jobs should make InstaGrow smarter by observing signals, pulling analytics, synthesizing weekly learnings, and proposing durable playbook updates. They must not publish, schedule, DM, comment, or recursively create jobs without explicit authorization.
+
+Minimum viable recurring setup:
+
+```text
+Weekly Learning Synthesizer — every Monday 09:00 WIB
+Monthly Playbook Evolution Reviewer — first day of month 10:00 WIB
+```
+
+Add Daily Signal Watcher and Post Analytics Puller only after real account lists, publishing logs, or analytics credentials exist.
 
 ### Account Routing
 
@@ -236,6 +252,7 @@ Before finalizing InstaGrow work:
 - [ ] Analytics storage is explicit: local files or Notion sync.
 - [ ] Timezone is Asia/Jakarta / WIB.
 - [ ] Required report/approval gate has been handled.
+- [ ] If recurring learning is involved, cron mode and report policy are explicit.
 - [ ] Next action is operator-ready.
 
 ## Common Pitfalls

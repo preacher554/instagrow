@@ -304,6 +304,12 @@ Must include:
 - decision: `scale`, `rewrite`, `change_format`, `follow_up`, `retire`, or `wait`,
 - updates needed for hook bank, opportunity backlog, copy variant log, or playbook.
 
+## Cron Guardrail
+
+When Hermes cron is used, follow `playbooks/instagrow-cron-learning-loop.md`. Cron jobs are allowed to observe, summarize, update authorized local ledgers, and recommend actions. They are not allowed to publish, schedule, DM, comment, mutate external social accounts, or recursively create more cron jobs unless explicit standing authorization exists.
+
+Cron reports should be delta-based: report meaningful changes, decisions, blockers, or proposed durable updates. Stay silent/local-only when there is no meaningful signal.
+
 ## Report Gates
 
 Report to Yuya at these moments.

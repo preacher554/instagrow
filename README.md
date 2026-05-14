@@ -33,6 +33,8 @@ Build a reusable Instagram growth system for GrowthForge that can:
 InstaGrow workflow
 ├── Execution Gates & Guardrails
 │   └── infer-first rules → report gates → stop/continue gates → approval gates
+├── Cron Learning Loop
+│   └── scheduled signal watch → analytics pull → weekly synthesis → playbook evolution
 ├── 0. Account Status Routing
 │   ├── Zero / New Account
 │   │   └── niche research → positioning → content pillars → launch experiments
@@ -78,6 +80,7 @@ instagrow/
 │           └── SKILL.md                # Compact Hermes skill entrypoint for InstaGrow
 ├── playbooks/
 │   ├── instagrow-execution-gates-guardrails.md # Agent guardrails, report gates, approval gates
+│   ├── instagrow-cron-learning-loop.md # Scheduled learning loops via Hermes cron
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
 │   ├── instagram-research-layer.md     # Research workflow, Hermes-native stack, Apify/Xpoz adapters
@@ -187,26 +190,29 @@ When creating an InstaGrow-focused agent, load:
 
 1. `agents/instagrow-agent.md`
 2. `playbooks/instagrow-execution-gates-guardrails.md`
-3. `playbooks/account-status-routing.md`
-4. `playbooks/instagram-operations.md`
-5. `playbooks/instagram-research-layer.md`
-6. `playbooks/research-engine-v2.md` for non-ambiguous Research Layer validation, scoring, and handoff rules
-7. `agents/instagrow-research-operator.md` when running research
-8. `playbooks/cross-platform-research.md`
-9. `playbooks/instagram-content-system-layer.md` when turning research into content strategy
-10. `playbooks/muse-copywriting-engine.md` when producing hooks, scripts, captions, variants, or copy audits
-11. `agents/instagrow-content-operator.md` when running the Content System Layer
-12. `playbooks/instagram-creative-production-layer.md` when turning briefs into assets
-13. `agents/instagrow-creative-producer.md` when running Creative Production
-14. `playbooks/instagram-publishing-analytics-layer.md` when scheduling/publishing or pulling metrics
-15. `agents/instagrow-publishing-operator.md` when running Publishing + Analytics
-16. Relevant SOP/template from `sops/` or `templates/`
+3. `playbooks/instagrow-cron-learning-loop.md` when designing scheduled learning or recurring monitoring
+4. `playbooks/account-status-routing.md`
+5. `playbooks/instagram-operations.md`
+6. `playbooks/instagram-research-layer.md`
+7. `playbooks/research-engine-v2.md` for non-ambiguous Research Layer validation, scoring, and handoff rules
+8. `agents/instagrow-research-operator.md` when running research
+9. `playbooks/cross-platform-research.md`
+10. `playbooks/instagram-content-system-layer.md` when turning research into content strategy
+11. `playbooks/muse-copywriting-engine.md` when producing hooks, scripts, captions, variants, or copy audits
+12. `agents/instagrow-content-operator.md` when running the Content System Layer
+13. `playbooks/instagram-creative-production-layer.md` when turning briefs into assets
+14. `agents/instagrow-creative-producer.md` when running Creative Production
+15. `playbooks/instagram-publishing-analytics-layer.md` when scheduling/publishing or pulling metrics
+16. `agents/instagrow-publishing-operator.md` when running Publishing + Analytics
+17. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
 ## Status
 
 Execution Gates & Guardrails are now added through `playbooks/instagrow-execution-gates-guardrails.md`. They define ask-less behavior, assumption rules, report gates, stop/continue gates, handoff contracts, execution modes, and live-publishing approval requirements.
+
+Cron Learning Loop is now added through `playbooks/instagrow-cron-learning-loop.md`. It defines scheduled signal watching, analytics pulling, weekly learning synthesis, monthly playbook evolution, and Hermes cron job prompt templates.
 
 Research Layer v2 clarification is now added through `playbooks/research-engine-v2.md`.
 
@@ -221,6 +227,7 @@ Next build targets:
 1. Local Carousel Fabricator implementation.
 2. Engagement Layer.
 3. Analytics + Learning Layer expansion.
-4. Adapter implementation scripts for Outstand/Postiz.
+4. Concrete Hermes cron job creation for real client/account workspaces.
+5. Adapter implementation scripts for Outstand/Postiz.
 
 This repo is designed to evolve as GrowthForge develops stronger Instagram systems and real account data comes in.
