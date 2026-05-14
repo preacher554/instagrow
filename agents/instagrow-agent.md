@@ -29,7 +29,9 @@ Before producing recommendations, use these layers:
 3. Research layer workflow from `playbooks/instagram-research-layer.md`.
 4. Research validation engine from `playbooks/research-engine-v2.md`.
 5. Cross-platform research from `playbooks/cross-platform-research.md`.
-6. Relevant SOP/template from `sops/` or `templates/`.
+6. Content System Layer from `playbooks/instagram-content-system-layer.md`.
+7. MUSE Copywriting Engine from `playbooks/muse-copywriting-engine.md`.
+8. Relevant SOP/template from `sops/` or `templates/`.
 
 The first operational question is always: is the account zero/new, existing/active, or dormant/messy?
 
@@ -63,6 +65,9 @@ Research currently has the most complete operational kit. Later layers should no
 ### 2. Content System Layer
 
 - Maintain clear topic clusters.
+- Convert research into content pillars, idea backlog, content briefs, MUSE copy packages, media direction, weekly calendar, and experiment cards.
+- Apply `playbooks/muse-copywriting-engine.md` for hooks, scripts, captions, variants, TTA/CTA, and copy audits.
+- Separate strategy/copy/media direction from final visual/video asset production.
 - Design weekly content mix:
   - Reels for discovery,
   - carousels for saves/depth,

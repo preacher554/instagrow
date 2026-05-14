@@ -42,9 +42,9 @@ InstaGrow workflow
 │   ├── data stores: hook bank + competitor map + opportunities + keyword bank + source log
 │   └── Instagram + X/Twitter + TikTok + YouTube + web/forum signals
 ├── 2. Content System Layer
-│   └── content pillars → idea backlog → content briefs → weekly calendar
+│   └── content pillars → MUSE copywriting engine → media briefs → weekly calendar → experiments
 ├── 3. Creative Production Layer
-│   └── scripts → carousel copy → visual direction → editing/asset checklist
+│   └── visual/video assets → editing → subtitles → covers → export QA
 ├── 4. Publishing Layer
 │   └── generate-only/manual posting → scheduler/API later → posting QA
 ├── 5. Engagement Layer
@@ -62,12 +62,15 @@ instagrow/
 ├── README.md
 ├── agents/
 │   ├── instagrow-agent.md              # Main specialist-agent instruction layer
-│   └── instagrow-research-operator.md  # Dedicated Research Layer operator
+│   ├── instagrow-research-operator.md  # Dedicated Research Layer operator
+│   └── instagrow-content-operator.md   # Content System + MUSE copy operator
 ├── playbooks/
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
 │   ├── instagram-research-layer.md     # Research workflow, Hermes-native stack, Apify/Xpoz adapters
 │   ├── research-engine-v2.md           # ORACLE-style validation, scoring, tension, and handoff engine
+│   ├── instagram-content-system-layer.md # Content pillars, briefs, calendar, experiment handoff
+│   ├── muse-copywriting-engine.md      # Strategic copywriting/scriptwriting subsystem
 │   └── cross-platform-research.md      # Cross-platform research workflow before content production
 ├── sops/
 │   ├── weekly-content-cycle.md         # Weekly execution rhythm
@@ -79,6 +82,7 @@ instagrow/
 │   ├── competitor-map.md               # Competitor/creator monitoring map
 │   ├── content-opportunities.md        # Scored opportunity backlog
 │   ├── keyword-bank.md                 # SEO/search/pain keywords
+│   ├── copy-variant-log.md             # MUSE copy A/B test history
 │   └── research-source-log.md          # Source notes and evidence trail
 └── templates/
     ├── research-brief.md
@@ -87,6 +91,8 @@ instagrow/
     ├── content-analysis-10-plus-3.md
     ├── opportunity-scorecard.md
     ├── experiment-card.md
+    ├── content-brief.md
+    ├── muse-copy-brief.md
     ├── reel-brief.md
     ├── carousel-brief.md
     └── story-sequence.md
@@ -149,20 +155,24 @@ When creating an InstaGrow-focused agent, load:
 5. `playbooks/research-engine-v2.md` for non-ambiguous Research Layer validation, scoring, and handoff rules
 6. `agents/instagrow-research-operator.md` when running research
 7. `playbooks/cross-platform-research.md`
-8. Relevant SOP/template from `sops/` or `templates/`
+8. `playbooks/instagram-content-system-layer.md` when turning research into content strategy
+9. `playbooks/muse-copywriting-engine.md` when producing hooks, scripts, captions, variants, or copy audits
+10. `agents/instagrow-content-operator.md` when running the Content System Layer
+11. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
 ## Status
 
-Research Layer v2 clarification is now added through `playbooks/research-engine-v2.md`. Research Layer remains the active build priority until the Research Engine, templates, and operator handoff are unambiguous for sub-agents.
+Research Layer v2 clarification is now added through `playbooks/research-engine-v2.md`.
 
-Next build targets after Research Layer v2 is stable:
+Content System Layer v1 is now added through `playbooks/instagram-content-system-layer.md`, `playbooks/muse-copywriting-engine.md`, `agents/instagrow-content-operator.md`, and the new content/copy templates. This fixes the strategy-copywriting bridge before Creative Production Layer work begins.
 
-1. Content System Layer.
-2. Creative Production Layer.
-3. Publishing Layer.
-4. Engagement Layer.
-5. Analytics + Learning Layer.
+Next build targets:
+
+1. Creative Production Layer: visual/video asset workflow, editing notes, covers, subtitles, QA.
+2. Publishing Layer.
+3. Engagement Layer.
+4. Analytics + Learning Layer.
 
 This repo is designed to evolve as GrowthForge develops stronger Instagram systems and real account data comes in.

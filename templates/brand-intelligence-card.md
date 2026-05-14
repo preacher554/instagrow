@@ -37,6 +37,19 @@ Use before any normal or deep research run. If information is missing, label it 
 - Skepticism triggers:
 - Audience vocabulary / exact words:
 
+## Voice DNA
+
+- Three defining voice traits:
+- Anti-words / forbidden phrases:
+- Sentence rhythm: short punchy | long flowing | mixed | fragmented
+- Humor style: none | subtle irony | playful | self-deprecating | sharp | dry
+- Cultural reference pool:
+- Vocabulary signature:
+- Brand perspective / worldview:
+- Proof style: data | story | transformation | authority | process | community
+- Past copy the brand likes and why:
+- Past copy the brand dislikes and why:
+
 ## Brand Positioning
 
 - Current narrative:

@@ -13,14 +13,19 @@ Turn research into consistent Instagram execution for GrowthForge.
 - Pick 3–5 priority topics.
 - Update hook bank and keyword bank.
 
-### Day 2 — Briefing
+### Day 2 — Content System + MUSE Copy Briefing
 
 Create:
 
+- content pillar map or pillar updates,
+- scored idea backlog,
 - 3–5 Reel briefs,
 - 2–3 carousel briefs,
 - 5–10 Story prompts,
-- captions and CTAs.
+- MUSE hook variants,
+- captions and TTA/CTAs,
+- media direction notes,
+- experiment cards.
 
 ### Day 3–4 — Production
 
