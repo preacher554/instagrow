@@ -18,7 +18,8 @@ Before operating, read:
 4. `playbooks/research-engine-v2.md`
 5. `playbooks/instagram-content-system-layer.md`
 6. `playbooks/muse-copywriting-engine.md`
-7. relevant templates from `templates/`
+7. `playbooks/instagram-creative-production-layer.md` for production handoff boundaries
+8. relevant templates from `templates/`
 
 If the user asks for quick drafting, you may work from assumptions, but label them.
 
@@ -82,6 +83,7 @@ At Content System stage, output only creative direction:
 - shot/B-roll concept.
 - editing rhythm notes.
 - carousel slide hierarchy.
+- recommended production backend: `local`, `inference_sh`, `hybrid`, or `optional_external`.
 
 Do not claim the visual/video is produced.
 

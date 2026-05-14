@@ -44,7 +44,7 @@ InstaGrow workflow
 ├── 2. Content System Layer
 │   └── content pillars → MUSE copywriting engine → media briefs → weekly calendar → experiments
 ├── 3. Creative Production Layer
-│   └── visual/video assets → editing → subtitles → covers → export QA
+│   └── local/inference.sh fabrication → editing → subtitles → covers → export QA
 ├── 4. Publishing Layer
 │   └── generate-only/manual posting → scheduler/API later → posting QA
 ├── 5. Engagement Layer
@@ -63,7 +63,8 @@ instagrow/
 ├── agents/
 │   ├── instagrow-agent.md              # Main specialist-agent instruction layer
 │   ├── instagrow-research-operator.md  # Dedicated Research Layer operator
-│   └── instagrow-content-operator.md   # Content System + MUSE copy operator
+│   ├── instagrow-content-operator.md   # Content System + MUSE copy operator
+│   └── instagrow-creative-producer.md  # Creative Production operator
 ├── playbooks/
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
@@ -71,12 +72,14 @@ instagrow/
 │   ├── research-engine-v2.md           # ORACLE-style validation, scoring, tension, and handoff engine
 │   ├── instagram-content-system-layer.md # Content pillars, briefs, calendar, experiment handoff
 │   ├── muse-copywriting-engine.md      # Strategic copywriting/scriptwriting subsystem
+│   ├── instagram-creative-production-layer.md # Asset fabrication, backend routing, export QA
 │   └── cross-platform-research.md      # Cross-platform research workflow before content production
 ├── sops/
 │   ├── weekly-content-cycle.md         # Weekly execution rhythm
 │   ├── experiment-log.md               # Experiment tracking format
 │   ├── manual-research-run.md          # Hermes-native no-key research SOP
-│   └── research-api-credential-checklist.md # When/how to request Apify + Xpoz credentials
+│   ├── research-api-credential-checklist.md # When/how to request Apify + Xpoz credentials
+│   └── creative-production-run.md      # Asset production and export QA SOP
 ├── data/
 │   ├── hook-bank.md                    # Reusable hooks and rewrites
 │   ├── competitor-map.md               # Competitor/creator monitoring map
@@ -95,7 +98,9 @@ instagrow/
     ├── muse-copy-brief.md
     ├── reel-brief.md
     ├── carousel-brief.md
-    └── story-sequence.md
+    ├── story-sequence.md
+    ├── creative-production-brief.md
+    └── asset-export-package.md
 ```
 
 Target evolution as the system matures:
@@ -107,6 +112,7 @@ instagrow/
 │   ├── instagrow-agent.md
 │   ├── instagrow-research-operator.md
 │   ├── instagrow-content-operator.md
+│   ├── instagrow-creative-producer.md
 │   └── instagrow-analytics-operator.md
 ├── skills/
 │   └── social-media/
@@ -122,10 +128,12 @@ instagrow/
 │   ├── account-status-routing.md
 │   ├── instagram-research-layer.md
 │   ├── instagram-content-layer.md
+│   ├── instagram-creative-production-layer.md
 │   ├── instagram-analytics-layer.md
 │   └── instagram-automation-layer.md
 ├── sops/
 │   ├── weekly-content-cycle.md
+│   ├── creative-production-run.md
 │   ├── experiment-log.md
 │   ├── existing-account-audit.md
 │   ├── zero-account-launch.md
@@ -137,7 +145,9 @@ instagrow/
 │   ├── experiment-log.md
 │   ├── reel-brief.md
 │   ├── carousel-brief.md
-│   └── story-sequence.md
+│   ├── story-sequence.md
+│   ├── creative-production-brief.md
+│   └── asset-export-package.md
 ├── evaluations/
 │   └── clawhub-instagram-analyzer-review.md
 └── scripts/
@@ -158,7 +168,9 @@ When creating an InstaGrow-focused agent, load:
 8. `playbooks/instagram-content-system-layer.md` when turning research into content strategy
 9. `playbooks/muse-copywriting-engine.md` when producing hooks, scripts, captions, variants, or copy audits
 10. `agents/instagrow-content-operator.md` when running the Content System Layer
-11. Relevant SOP/template from `sops/` or `templates/`
+11. `playbooks/instagram-creative-production-layer.md` when turning briefs into assets
+12. `agents/instagrow-creative-producer.md` when running Creative Production
+13. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
@@ -166,11 +178,13 @@ The agent should output production-ready briefs, not just ideas.
 
 Research Layer v2 clarification is now added through `playbooks/research-engine-v2.md`.
 
-Content System Layer v1 is now added through `playbooks/instagram-content-system-layer.md`, `playbooks/muse-copywriting-engine.md`, `agents/instagrow-content-operator.md`, and the new content/copy templates. This fixes the strategy-copywriting bridge before Creative Production Layer work begins.
+Content System Layer v1 is now added through `playbooks/instagram-content-system-layer.md`, `playbooks/muse-copywriting-engine.md`, `agents/instagrow-content-operator.md`, and the content/copy templates.
+
+Creative Production Layer v1 is now added through `playbooks/instagram-creative-production-layer.md`, `agents/instagrow-creative-producer.md`, `sops/creative-production-run.md`, and production/export templates. It defines local deterministic rendering as the free MVP path and inference.sh as the primary paid media runtime.
 
 Next build targets:
 
-1. Creative Production Layer: visual/video asset workflow, editing notes, covers, subtitles, QA.
+1. Local Carousel Fabricator implementation.
 2. Publishing Layer.
 3. Engagement Layer.
 4. Analytics + Learning Layer.

@@ -27,12 +27,15 @@ Create:
 - media direction notes,
 - experiment cards.
 
-### Day 3–4 — Production
+### Day 3–4 — Creative Production
 
-- Record/edit Reels.
-- Design carousels.
-- Prepare Story sequences.
-- QA hooks, captions, and CTAs.
+- Normalize creative production briefs.
+- Select backend route: local deterministic, inference.sh, hybrid, or optional external.
+- Record/edit Reels or generate B-roll when useful.
+- Design/render carousels, covers, Story frames, and static assets.
+- Add subtitles/text overlays deterministically where possible.
+- Export asset packages with caption, hashtags, alt text, metadata, and QA report.
+- QA hooks, captions, CTAs, safe zones, readability, dimensions, and watermarks.
 
 ### Day 5–7 — Publishing + Engagement
 

@@ -141,7 +141,7 @@ Content System should output:
 - audio direction.
 - production constraints.
 
-Creative Production Layer later turns this into actual visuals, video edits, covers, subtitles, exports, and QA.
+Creative Production Layer later turns this into actual visuals, video edits, covers, subtitles, export packages, and QA. See `playbooks/instagram-creative-production-layer.md`.
 
 Boundary rule:
 
@@ -219,6 +219,7 @@ For a normal content cycle, produce:
 8. media direction notes.
 9. weekly content calendar.
 10. experiment cards.
+11. Creative Production handoff brief with backend recommendation: `local`, `inference_sh`, `hybrid`, or `optional_external`.
 
 ## Quality Gate
 
