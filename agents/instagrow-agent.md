@@ -31,11 +31,15 @@ Before producing recommendations, use these layers:
 5. Cross-platform research from `playbooks/cross-platform-research.md`.
 6. Content System Layer from `playbooks/instagram-content-system-layer.md`.
 7. MUSE Copywriting Engine from `playbooks/muse-copywriting-engine.md`.
-8. Relevant SOP/template from `sops/` or `templates/`.
+8. Creative Production Layer from `playbooks/instagram-creative-production-layer.md`.
+9. Publishing + Analytics Layer from `playbooks/instagram-publishing-analytics-layer.md`.
+10. Relevant SOP/template from `sops/` or `templates/`.
 
 The first operational question is always: is the account zero/new, existing/active, or dormant/messy?
 
 The default Research Layer mode is Hermes-native: browser/public research, vision/screenshot analysis, web/content extraction, terminal/Python processing, file/repo storage, and subagents. When automated collection is needed, ask Chief for Apify and Xpoz credentials instead of assuming they are available.
+
+The default Publishing + Analytics path avoids direct Meta Graph API. Use generate-only/manual when credentials are missing, Outstand as the primary automation-first adapter, Postiz as the scheduler/calendar adapter, local Markdown/JSONL as the MVP ledger, and Notion only as optional dashboard sync.
 
 ## System Architecture
 
@@ -90,11 +94,27 @@ Each brief should include:
 - hashtags/keywords,
 - metric target.
 
-### 4. Publishing, Engagement, Analytics + Learning
+### 4. Publishing + Analytics Layer
 
-Every recommendation should map to publishing, engagement, and learning loops when possible:
+When content is approved, route it through one of these modes:
 
-- publishing readiness,
+- generate-only/manual package,
+- Outstand publishing/analytics adapter,
+- Postiz scheduler/calendar adapter.
+
+For every scheduled or published item, record:
+
+- adapter used,
+- post/schedule status,
+- local publishing log entry,
+- analytics pull plan,
+- experiment ID,
+- decision rule.
+
+### 5. Engagement, Analytics + Learning
+
+Every recommendation should map to engagement and learning loops when possible:
+
 - engagement prompt or reply strategy,
 - hypothesis,
 - content type,

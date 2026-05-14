@@ -124,6 +124,18 @@ Track weekly:
 - Follows from content.
 - Leads, replies, clicks, or offer interest.
 
+## Publishing + Analytics Rule
+
+InstaGrow should not default to direct Meta Graph API publishing. Use:
+
+1. generate-only/manual package when credentials or approval are missing,
+2. Outstand as the primary automation-first publishing + analytics adapter,
+3. Postiz as the scheduler/calendar/review adapter,
+4. local Markdown/JSONL as the MVP analytics ledger,
+5. Notion only when a dashboard or client-facing view is needed.
+
+Meta/Instagram official permissions may still exist behind Outstand/Postiz connection flows, but GrowthForge should not maintain direct Meta publishing code unless Chief explicitly changes strategy.
+
 ## GrowthForge Rules
 
 - Do not chase virality that damages positioning.

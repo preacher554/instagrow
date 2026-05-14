@@ -24,6 +24,8 @@ Build a reusable Instagram growth system for GrowthForge that can:
 - GrowthForge content must serve business leverage, not vanity virality.
 - Research must be cross-platform: Instagram, X/Twitter, TikTok, YouTube, and web/forum pain language.
 - Analysis must start by classifying account status: zero/new, existing/active, or dormant/messy.
+- Publishing should avoid direct Meta Graph API as the core integration; prefer Outstand or Postiz, with generate-only/manual as fallback.
+- Analytics should be logged locally first, then synced to Notion only when a dashboard/client view is needed.
 
 ## Workflow Map
 
@@ -45,8 +47,10 @@ InstaGrow workflow
 │   └── content pillars → MUSE copywriting engine → media briefs → weekly calendar → experiments
 ├── 3. Creative Production Layer
 │   └── local/inference.sh fabrication → editing → subtitles → covers → export QA
-├── 4. Publishing Layer
-│   └── generate-only/manual posting → scheduler/API later → posting QA
+├── 4. Publishing + Analytics Layer
+│   ├── generate-only/manual posting → Outstand/Postiz adapters → posting QA
+│   ├── analytics pull: post metrics + account metrics
+│   └── storage: local Markdown/JSONL first, Notion optional
 ├── 5. Engagement Layer
 │   └── warm-up → comment/DM response → Story interactions → relationship loops
 └── 6. Analytics + Learning Layer
@@ -64,7 +68,12 @@ instagrow/
 │   ├── instagrow-agent.md              # Main specialist-agent instruction layer
 │   ├── instagrow-research-operator.md  # Dedicated Research Layer operator
 │   ├── instagrow-content-operator.md   # Content System + MUSE copy operator
-│   └── instagrow-creative-producer.md  # Creative Production operator
+│   ├── instagrow-creative-producer.md  # Creative Production operator
+│   └── instagrow-publishing-operator.md # Publishing + analytics operator
+├── skills/
+│   └── social-media/
+│       └── instagrow-growth-operator/
+│           └── SKILL.md                # Compact Hermes skill entrypoint for InstaGrow
 ├── playbooks/
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
@@ -73,20 +82,28 @@ instagrow/
 │   ├── instagram-content-system-layer.md # Content pillars, briefs, calendar, experiment handoff
 │   ├── muse-copywriting-engine.md      # Strategic copywriting/scriptwriting subsystem
 │   ├── instagram-creative-production-layer.md # Asset fabrication, backend routing, export QA
+│   ├── instagram-publishing-analytics-layer.md # Outstand/Postiz publishing, analytics, storage
 │   └── cross-platform-research.md      # Cross-platform research workflow before content production
 ├── sops/
 │   ├── weekly-content-cycle.md         # Weekly execution rhythm
 │   ├── experiment-log.md               # Experiment tracking format
 │   ├── manual-research-run.md          # Hermes-native no-key research SOP
-│   ├── research-api-credential-checklist.md # When/how to request Apify + Xpoz credentials
-│   └── creative-production-run.md      # Asset production and export QA SOP
+│   ├── research-api-credential-checklist.md # When/how to request research/publishing credentials
+│   ├── creative-production-run.md      # Asset production and export QA SOP
+│   └── publishing-run.md               # Publish/schedule/log/analytics SOP
 ├── data/
 │   ├── hook-bank.md                    # Reusable hooks and rewrites
 │   ├── competitor-map.md               # Competitor/creator monitoring map
 │   ├── content-opportunities.md        # Scored opportunity backlog
 │   ├── keyword-bank.md                 # SEO/search/pain keywords
 │   ├── copy-variant-log.md             # MUSE copy A/B test history
-│   └── research-source-log.md          # Source notes and evidence trail
+│   ├── research-source-log.md          # Source notes and evidence trail
+│   ├── publishing-log.md               # Human-readable publishing ledger
+│   ├── publishing-log.jsonl            # Machine-readable publishing ledger
+│   ├── analytics-snapshots.md          # Human-readable analytics snapshots
+│   ├── analytics-snapshots.jsonl       # Machine-readable analytics snapshots
+│   ├── account-metrics-log.md          # Human-readable account metrics ledger
+│   └── account-metrics-log.jsonl       # Machine-readable account metrics ledger
 └── templates/
     ├── research-brief.md
     ├── research-report.md
@@ -100,7 +117,9 @@ instagrow/
     ├── carousel-brief.md
     ├── story-sequence.md
     ├── creative-production-brief.md
-    └── asset-export-package.md
+    ├── asset-export-package.md
+    ├── publishing-package.md
+    └── analytics-snapshot.md
 ```
 
 Target evolution as the system matures:
@@ -113,6 +132,7 @@ instagrow/
 │   ├── instagrow-research-operator.md
 │   ├── instagrow-content-operator.md
 │   ├── instagrow-creative-producer.md
+│   ├── instagrow-publishing-operator.md
 │   └── instagrow-analytics-operator.md
 ├── skills/
 │   └── social-media/
@@ -129,11 +149,13 @@ instagrow/
 │   ├── instagram-research-layer.md
 │   ├── instagram-content-layer.md
 │   ├── instagram-creative-production-layer.md
+│   ├── instagram-publishing-analytics-layer.md
 │   ├── instagram-analytics-layer.md
 │   └── instagram-automation-layer.md
 ├── sops/
 │   ├── weekly-content-cycle.md
 │   ├── creative-production-run.md
+│   ├── publishing-run.md
 │   ├── experiment-log.md
 │   ├── existing-account-audit.md
 │   ├── zero-account-launch.md
@@ -147,7 +169,9 @@ instagrow/
 │   ├── carousel-brief.md
 │   ├── story-sequence.md
 │   ├── creative-production-brief.md
-│   └── asset-export-package.md
+│   ├── asset-export-package.md
+│   ├── publishing-package.md
+│   └── analytics-snapshot.md
 ├── evaluations/
 │   └── clawhub-instagram-analyzer-review.md
 └── scripts/
@@ -170,7 +194,9 @@ When creating an InstaGrow-focused agent, load:
 10. `agents/instagrow-content-operator.md` when running the Content System Layer
 11. `playbooks/instagram-creative-production-layer.md` when turning briefs into assets
 12. `agents/instagrow-creative-producer.md` when running Creative Production
-13. Relevant SOP/template from `sops/` or `templates/`
+13. `playbooks/instagram-publishing-analytics-layer.md` when scheduling/publishing or pulling metrics
+14. `agents/instagrow-publishing-operator.md` when running Publishing + Analytics
+15. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
@@ -182,11 +208,13 @@ Content System Layer v1 is now added through `playbooks/instagram-content-system
 
 Creative Production Layer v1 is now added through `playbooks/instagram-creative-production-layer.md`, `agents/instagrow-creative-producer.md`, `sops/creative-production-run.md`, and production/export templates. It defines local deterministic rendering as the free MVP path and inference.sh as the primary paid media runtime.
 
+Publishing + Analytics Layer v1 is now added through `playbooks/instagram-publishing-analytics-layer.md`, `agents/instagrow-publishing-operator.md`, `sops/publishing-run.md`, publishing/analytics templates, and local data ledgers. It defines Outstand as the primary automation-first adapter, Postiz as the scheduler/calendar adapter, local Markdown/JSONL as the MVP source of truth, and Notion as optional dashboard sync.
+
 Next build targets:
 
 1. Local Carousel Fabricator implementation.
-2. Publishing Layer.
-3. Engagement Layer.
-4. Analytics + Learning Layer.
+2. Engagement Layer.
+3. Analytics + Learning Layer expansion.
+4. Adapter implementation scripts for Outstand/Postiz.
 
 This repo is designed to evolve as GrowthForge develops stronger Instagram systems and real account data comes in.
