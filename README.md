@@ -31,6 +31,8 @@ Build a reusable Instagram growth system for GrowthForge that can:
 
 ```text
 InstaGrow workflow
+├── Execution Gates & Guardrails
+│   └── infer-first rules → report gates → stop/continue gates → approval gates
 ├── 0. Account Status Routing
 │   ├── Zero / New Account
 │   │   └── niche research → positioning → content pillars → launch experiments
@@ -75,6 +77,7 @@ instagrow/
 │       └── instagrow-growth-operator/
 │           └── SKILL.md                # Compact Hermes skill entrypoint for InstaGrow
 ├── playbooks/
+│   ├── instagrow-execution-gates-guardrails.md # Agent guardrails, report gates, approval gates
 │   ├── account-status-routing.md       # Step 0: zero/new vs existing/active vs dormant/messy
 │   ├── instagram-operations.md         # Instagram fundamentals and operating rules
 │   ├── instagram-research-layer.md     # Research workflow, Hermes-native stack, Apify/Xpoz adapters
@@ -183,24 +186,27 @@ instagrow/
 When creating an InstaGrow-focused agent, load:
 
 1. `agents/instagrow-agent.md`
-2. `playbooks/account-status-routing.md`
-3. `playbooks/instagram-operations.md`
-4. `playbooks/instagram-research-layer.md`
-5. `playbooks/research-engine-v2.md` for non-ambiguous Research Layer validation, scoring, and handoff rules
-6. `agents/instagrow-research-operator.md` when running research
-7. `playbooks/cross-platform-research.md`
-8. `playbooks/instagram-content-system-layer.md` when turning research into content strategy
-9. `playbooks/muse-copywriting-engine.md` when producing hooks, scripts, captions, variants, or copy audits
-10. `agents/instagrow-content-operator.md` when running the Content System Layer
-11. `playbooks/instagram-creative-production-layer.md` when turning briefs into assets
-12. `agents/instagrow-creative-producer.md` when running Creative Production
-13. `playbooks/instagram-publishing-analytics-layer.md` when scheduling/publishing or pulling metrics
-14. `agents/instagrow-publishing-operator.md` when running Publishing + Analytics
-15. Relevant SOP/template from `sops/` or `templates/`
+2. `playbooks/instagrow-execution-gates-guardrails.md`
+3. `playbooks/account-status-routing.md`
+4. `playbooks/instagram-operations.md`
+5. `playbooks/instagram-research-layer.md`
+6. `playbooks/research-engine-v2.md` for non-ambiguous Research Layer validation, scoring, and handoff rules
+7. `agents/instagrow-research-operator.md` when running research
+8. `playbooks/cross-platform-research.md`
+9. `playbooks/instagram-content-system-layer.md` when turning research into content strategy
+10. `playbooks/muse-copywriting-engine.md` when producing hooks, scripts, captions, variants, or copy audits
+11. `agents/instagrow-content-operator.md` when running the Content System Layer
+12. `playbooks/instagram-creative-production-layer.md` when turning briefs into assets
+13. `agents/instagrow-creative-producer.md` when running Creative Production
+14. `playbooks/instagram-publishing-analytics-layer.md` when scheduling/publishing or pulling metrics
+15. `agents/instagrow-publishing-operator.md` when running Publishing + Analytics
+16. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
 ## Status
+
+Execution Gates & Guardrails are now added through `playbooks/instagrow-execution-gates-guardrails.md`. They define ask-less behavior, assumption rules, report gates, stop/continue gates, handoff contracts, execution modes, and live-publishing approval requirements.
 
 Research Layer v2 clarification is now added through `playbooks/research-engine-v2.md`.
 

@@ -42,6 +42,7 @@ Do not use this as a replacement for account-specific evidence. It defines the o
 ## Layer Map
 
 ```text
+Execution Gates & Guardrails
 0. Account Status Routing
 1. Research Layer
 2. Content System Layer + MUSE Copywriting
@@ -59,6 +60,7 @@ When operating from the repo, load in this order as needed:
 
 ```text
 agents/instagrow-agent.md
+playbooks/instagrow-execution-gates-guardrails.md
 playbooks/account-status-routing.md
 playbooks/instagram-operations.md
 playbooks/instagram-research-layer.md
@@ -77,6 +79,21 @@ agents/instagrow-publishing-operator.md
 Use `sops/` and `templates/` for execution artifacts, not ad-hoc formats.
 
 ## Operating Defaults
+
+### Execution Gates & Guardrails
+
+Before operating, follow `playbooks/instagrow-execution-gates-guardrails.md`. Default behavior: infer first, ask less, continue in the safest useful mode, report only at defined gates, and never create external side effects without approval.
+
+Key defaults:
+
+```text
+Missing credentials → manual/generate-only mode
+Missing brand kit → draft/handoff mode
+Missing Insights → public evidence + confidence label
+Publishing not approved → generate-only package
+```
+
+Report to Yuya at intake blockers, routing gate, strategy gate, production gate, publishing gate, analytics decision gate, and exception gate. Every run must end with a concrete artifact.
 
 ### Account Routing
 
@@ -210,6 +227,7 @@ Avoid vanity-only virality, random trend chasing, generic advice, or workflow co
 
 Before finalizing InstaGrow work:
 
+- [ ] Execution mode is clear: dry_run, repo_update, publish_ready, or live_publish.
 - [ ] Account status is classified.
 - [ ] Research source mode is clear.
 - [ ] Content decision maps to a pillar and metric target.
@@ -217,6 +235,7 @@ Before finalizing InstaGrow work:
 - [ ] Publishing adapter is explicit: manual, Outstand, or Postiz.
 - [ ] Analytics storage is explicit: local files or Notion sync.
 - [ ] Timezone is Asia/Jakarta / WIB.
+- [ ] Required report/approval gate has been handled.
 - [ ] Next action is operator-ready.
 
 ## Common Pitfalls
