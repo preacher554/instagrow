@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Renderer smoke/test output
+renderers/.smoke-output/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# OS/editor noise
+.DS_Store
+.vscode/
+.idea/

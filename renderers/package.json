@@ -1,0 +1,22 @@
+{
+  "name": "@growthforge/instagrow-renderers",
+  "version": "0.1.0",
+  "description": "Local deterministic renderers for InstaGrow creative production",
+  "main": "index.js",
+  "scripts": {
+    "test": "node smoke-test.mjs",
+    "install-browsers": "playwright install chromium",
+    "verify": "node smoke-test.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT-0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "canvas": "^3.2.3",
+    "playwright": "^1.60.0",
+    "sharp": "^0.34.5",
+    "zod": "^4.4.3"
+  }
+}
