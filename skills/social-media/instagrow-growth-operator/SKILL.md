@@ -37,7 +37,8 @@ Load this skill when asked to:
 - design publishing, scheduling, analytics, or learning loops,
 - configure automation-first posting, local logging, analytics pulling, and status reconciliation,
 - decide which API credentials/adapters are needed for InstaGrow automation,
-- design Hermes cron loops for automated publishing/status reconciliation, analytics pulls, weekly learning synthesis, or playbook evolution.
+- design Hermes cron loops for automated publishing/status reconciliation, analytics pulls, weekly learning synthesis, or playbook evolution,
+- produce asset-aware content packages from existing photos, screenshots, logos, product images, or local brand assets.
 
 Do not use this as a replacement for account-specific evidence. It defines the operating system; the agent still needs actual account/research data.
 
@@ -73,6 +74,8 @@ playbooks/cross-platform-research.md
 playbooks/instagram-content-system-layer.md
 playbooks/muse-copywriting-engine.md
 playbooks/instagram-creative-production-layer.md
+playbooks/instagrow-agent-roster.md
+playbooks/asset-aware-content-production.md
 playbooks/instagram-publishing-analytics-layer.md
 agents/instagrow-research-operator.md
 agents/instagrow-content-operator.md
@@ -177,7 +180,7 @@ Premium media runtime:
 inference.sh
 ```
 
-Creative Production should output QA'd asset packages, not rewrite strategy unless constraints force it.
+Creative Production should output QA'd asset packages, not rewrite strategy unless constraints force it. For v1, Asset Finder, Asset Normalizer, Renderer, and Creative QA are submodules inside `agents/instagrow-creative-producer.md`, not separate agents. Prefer local deterministic rendering for carousels, product posters, screenshots, and exact-text assets.
 
 ### Publishing + Analytics
 

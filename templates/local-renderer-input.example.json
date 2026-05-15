@@ -1,0 +1,68 @@
+{
+  "content_id": "example-resource-drop-001",
+  "niche": "ai_tools",
+  "account": "growthforge",
+  "template": "resource-drop-lead-magnet",
+  "size": "1080x1350",
+  "theme": "dark-yellow-green",
+  "brand": {
+    "name": "GrowthForge",
+    "logo": "assets/brands/growthforge/logo.png",
+    "colors": {
+      "background": "#0B0F14",
+      "headline": "#FFD84D",
+      "accent": "#7CFF8A",
+      "body": "#F4F4F4"
+    },
+    "fonts": {
+      "heading": "Inter",
+      "body": "Inter"
+    }
+  },
+  "cta": {
+    "type": "comment_keyword",
+    "keyword": "TOOLS",
+    "text": "Comment \"TOOLS\" untuk dapat list-nya."
+  },
+  "slides": [
+    {
+      "type": "hook",
+      "headline": "5 tools AI gratis yang layak kamu simpan minggu ini",
+      "subheadline": "Bukan list random. Ini tool yang bisa dipakai buat kerja nyata.",
+      "asset_id": "cover-tool-collage"
+    },
+    {
+      "type": "item",
+      "number": 1,
+      "title": "Tool name",
+      "body": "Satu kalimat manfaat utama untuk audience spesifik.",
+      "asset_id": "tool-screenshot-01"
+    },
+    {
+      "type": "cta",
+      "headline": "Mau list lengkapnya?",
+      "body": "Comment keyword di bawah. Simpan dulu biar nggak hilang.",
+      "cta_text": "Comment \"TOOLS\""
+    }
+  ],
+  "assets": [
+    {
+      "asset_id": "cover-tool-collage",
+      "path": "assets/sources/example/cover.png",
+      "source_note": "Uploaded/reference asset",
+      "usage_risk": "low"
+    },
+    {
+      "asset_id": "tool-screenshot-01",
+      "path": "assets/sources/example/tool-01.png",
+      "source_note": "First-party website screenshot",
+      "usage_risk": "medium"
+    }
+  ],
+  "export": {
+    "directory": "exports/example-resource-drop-001",
+    "include_contact_sheet": true,
+    "include_metadata": true,
+    "include_qa_report": true
+  }
+}

@@ -4,7 +4,13 @@
 
 The Creative Production Layer turns Content System outputs into publish-ready Instagram assets.
 
-It does **not** decide the strategy, audience, pillar, offer, or copy angle. Those belong to the Research Layer, Content System Layer, and MUSE Copywriting Engine. This layer owns fabrication, rendering, editing direction, export packaging, and asset QA.
+It does **not** decide the strategy, audience, pillar, offer, or copy angle. Those belong to the Research Layer, Content System Layer, and MUSE Copywriting Engine. This layer owns asset finding, asset normalization, fabrication, rendering, editing direction, export packaging, and asset QA.
+
+For v1, these are capabilities inside the Creative Producer, not separate agents:
+
+```text
+Asset Finder -> Asset Normalizer -> Creative Composer / Renderer -> Creative QA
+```
 
 ```text
 Research Layer
@@ -43,8 +49,9 @@ Use for MVP, repeatable carousels, quote cards, covers, Story cards, and any ass
 
 Default tools:
 
+- Node.js + Playwright + HTML/CSS templates for static PNG/JPG rendering.
 - HTML/CSS/SVG templates.
-- Canvas or Pillow when useful.
+- Canvas, Sharp, or Pillow when useful.
 - FFmpeg for video assembly, resizing, subtitles, and contact sheets.
 - Local folder export with deterministic filenames.
 
@@ -166,11 +173,11 @@ Translate strategy into art direction:
 - Instagram safe zones,
 - cover legibility rules.
 
-### 4. Asset Generation Engine
+### 4. Asset Finder + Normalizer
 
-Create or collect raw media assets.
+Create, collect, or receive raw media assets, then normalize them for rendering.
 
-Possible routes:
+Possible sources/routes:
 
 - local template rendering,
 - inference.sh image/video/audio generation,
@@ -178,9 +185,13 @@ Possible routes:
 - stock/B-roll,
 - screenshots/proof assets,
 - screen recordings,
-- founder/client footage.
+- founder/client footage,
+- uploaded files from Chief/client,
+- Google Drive assets,
+- website screenshots,
+- public URLs with usage-risk notes.
 
-Do not assume generated URLs are permanent. Save or mirror final assets into owned storage when possible.
+Create an asset manifest when using existing assets. Do not assume generated URLs are permanent. Save or mirror final assets into owned storage when possible.
 
 ### 5. Render + Post-Processing Engine
 
@@ -260,7 +271,7 @@ After publishing and metrics review, update:
 
 ## MVP Build Recommendation
 
-Start with **Local Carousel Fabricator**.
+Start with **Local Creative Renderer v0**.
 
 Why:
 
@@ -285,6 +296,15 @@ MVP input:
 - caption,
 - hashtags,
 - alt text.
+
+MVP static renderer phases:
+
+```text
+Phase 1: clean narrative carousel from JSON -> PNG
+Phase 2: asset-aware resource drop carousel with screenshots
+Phase 3: product poster + product benefit carousel
+Phase 4: optional video/render backend adapters
+```
 
 MVP output:
 

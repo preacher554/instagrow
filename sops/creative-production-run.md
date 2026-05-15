@@ -31,7 +31,22 @@ Confirm or label assumptions for:
 
 Do not let media generation rewrite these fields.
 
-### 3. Select Backend Route
+### 3. Build Asset Manifest
+
+If the asset uses existing photos, screenshots, logos, product visuals, testimonials, charts, stock assets, or public images, create/update an asset manifest before rendering.
+
+Record:
+
+- local path,
+- source URL or source note,
+- usage risk,
+- owner/license assumption,
+- transformations needed,
+- final slide/post/story usage.
+
+Use `templates/asset-manifest.md`.
+
+### 4. Select Backend Route
 
 Use this default routing:
 
@@ -40,7 +55,7 @@ Use this default routing:
 - Final text, subtitles, crop, resizing: deterministic renderer or FFmpeg.
 - Premium AI video: only when the concept benefits from it and budget exists.
 
-### 4. Build Assets
+### 5. Build Assets
 
 Create:
 
@@ -52,7 +67,7 @@ Create:
 - metadata,
 - QA report.
 
-### 5. QA Before Handoff
+### 6. QA Before Handoff
 
 Check:
 
@@ -64,9 +79,11 @@ Check:
 - subtitles where needed,
 - no unsupported claims,
 - no unwanted watermark,
-- file naming.
+- file naming,
+- asset usage/source risk recorded,
+- export manifest complete.
 
-### 6. Handoff To Publishing Layer
+### 7. Handoff To Publishing Layer
 
 Provide:
 
@@ -76,7 +93,7 @@ Provide:
 - manual posting/scheduler/API notes,
 - QA status.
 
-### 7. Capture Learning After Metrics
+### 8. Capture Learning After Metrics
 
 Update experiment/template notes with:
 
@@ -95,4 +112,5 @@ Stop and mark `Production Blocker` if:
 - claims cannot be verified,
 - required product/person visual reference is missing,
 - the requested format cannot meet Instagram dimensions,
-- paid backend credentials/budget are required but unavailable.
+- paid backend credentials/budget are required but unavailable,
+- required asset source/usage risk is high and no approved substitute exists.

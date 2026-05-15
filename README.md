@@ -27,6 +27,8 @@ Build a reusable Instagram growth system for GrowthForge that can:
 - Publishing should be automation-first once approval, adapter credentials, target account, and QA gates are satisfied; prefer Outstand or Postiz, with generate-only/manual as fallback.
 - Analytics should be pulled and logged automatically when adapter credentials exist; local Markdown/JSONL remains the first ledger, with Notion only as optional dashboard/client view.
 - Comment/DM automation should be handled by ManyChat when needed; InstaGrow should not build a custom Comment/DM response agent in the MVP.
+- InstaGrow v1 uses a lean 4-agent roster: Research Operator, Content Operator, Creative Producer, and Publishing Operator. Yuya remains the orchestrator above them.
+- Creative Production must be asset-aware: collect/receive existing photos, screenshots, logos, product visuals, and proof assets; normalize them; render them into templates; and QA the export package.
 
 ## Workflow Map
 
@@ -51,7 +53,8 @@ InstaGrow workflow
 ├── 2. Content System Layer
 │   └── content pillars → MUSE copywriting engine → media briefs → weekly calendar → experiments
 ├── 3. Creative Production Layer
-│   └── local/inference.sh fabrication → editing → subtitles → covers → export QA
+│   ├── Asset Finder → Asset Normalizer → Renderer → Creative QA
+│   └── local deterministic renderer first; inference.sh/MoneyPrinterTurbo only when useful
 ├── 4. Publishing + Analytics Layer
 │   ├── automation-first posting when approval + credentials + QA are satisfied
 │   ├── Outstand/Postiz adapters → publish/schedule → status reconciliation
@@ -90,7 +93,9 @@ instagrow/
 │   ├── instagram-content-system-layer.md # Content pillars, briefs, calendar, experiment handoff
 │   ├── muse-copywriting-engine.md      # Strategic copywriting/scriptwriting subsystem
 │   ├── instagram-creative-production-layer.md # Asset fabrication, backend routing, export QA
+│   ├── instagrow-agent-roster.md       # Lean 4-agent roster and split conditions
 │   ├── instagram-publishing-analytics-layer.md # Outstand/Postiz publishing, analytics, storage
+│   ├── asset-aware-content-production.md # Asset finder/normalizer/renderer/QA workflow
 │   └── cross-platform-research.md      # Cross-platform research workflow before content production
 ├── sops/
 │   ├── weekly-content-cycle.md         # Weekly execution rhythm
@@ -179,7 +184,9 @@ instagrow/
 │   ├── carousel-brief.md
 │   ├── story-sequence.md
 │   ├── creative-production-brief.md
+│   ├── asset-manifest.md
 │   ├── asset-export-package.md
+│   ├── local-renderer-input.example.json
 │   ├── publishing-package.md
 │   └── analytics-snapshot.md
 ├── evaluations/
@@ -196,20 +203,22 @@ When creating an InstaGrow-focused agent, load:
 2. `playbooks/instagrow-execution-gates-guardrails.md`
 3. `playbooks/instagrow-cron-learning-loop.md` when designing scheduled learning or recurring monitoring
 4. `playbooks/account-status-routing.md`
-5. `playbooks/instagram-operations.md`
-6. `playbooks/instagram-research-layer.md`
-7. `playbooks/research-engine-v2.md` for non-ambiguous Research Layer validation, scoring, and handoff rules
-8. `agents/instagrow-research-operator.md` when running research
-9. `playbooks/cross-platform-research.md`
-10. `playbooks/instagram-content-system-layer.md` when turning research into content strategy
-11. `playbooks/muse-copywriting-engine.md` when producing hooks, scripts, captions, variants, or copy audits
-12. `agents/instagrow-content-operator.md` when running the Content System Layer
-13. `playbooks/instagram-creative-production-layer.md` when turning briefs into assets
-14. `agents/instagrow-creative-producer.md` when running Creative Production
-15. `playbooks/instagram-publishing-analytics-layer.md` when scheduling/publishing or pulling metrics
-16. `agents/instagrow-publishing-operator.md` when running Publishing + Analytics
-17. `sops/automation-setup.md` when configuring automated posting, logging, analytics pulls, or recurring cron jobs
-18. Relevant SOP/template from `sops/` or `templates/`
+5. `playbooks/instagrow-agent-roster.md` for the lean Research → Content → Creative → Publishing roster
+6. `playbooks/instagram-operations.md`
+7. `playbooks/instagram-research-layer.md`
+8. `playbooks/research-engine-v2.md` for non-ambiguous Research Layer validation, scoring, and handoff rules
+9. `agents/instagrow-research-operator.md` when running research
+10. `playbooks/cross-platform-research.md`
+11. `playbooks/instagram-content-system-layer.md` when turning research into content strategy
+12. `playbooks/muse-copywriting-engine.md` when producing hooks, scripts, captions, variants, or copy audits
+13. `agents/instagrow-content-operator.md` when running the Content System Layer
+14. `playbooks/instagram-creative-production-layer.md` when turning briefs into assets
+15. `playbooks/asset-aware-content-production.md` when using existing photos, screenshots, logos, product visuals, or proof assets
+16. `agents/instagrow-creative-producer.md` when running Creative Production
+17. `playbooks/instagram-publishing-analytics-layer.md` when scheduling/publishing or pulling metrics
+18. `agents/instagrow-publishing-operator.md` when running Publishing + Analytics
+19. `sops/automation-setup.md` when configuring automated posting, logging, analytics pulls, or recurring cron jobs
+20. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
@@ -223,16 +232,19 @@ Research Layer v2 clarification is now added through `playbooks/research-engine-
 
 Content System Layer v1 is now added through `playbooks/instagram-content-system-layer.md`, `playbooks/muse-copywriting-engine.md`, `agents/instagrow-content-operator.md`, and the content/copy templates.
 
-Creative Production Layer v1 is now added through `playbooks/instagram-creative-production-layer.md`, `agents/instagrow-creative-producer.md`, `sops/creative-production-run.md`, and production/export templates. It defines local deterministic rendering as the free MVP path and inference.sh as the primary paid media runtime.
+Creative Production Layer v1 is now added through `playbooks/instagram-creative-production-layer.md`, `playbooks/asset-aware-content-production.md`, `agents/instagrow-creative-producer.md`, `sops/creative-production-run.md`, `renderers/README.md`, and production/export templates. It defines local deterministic rendering as the free MVP path, asset-aware assembly as the default content production model, and inference.sh/MoneyPrinterTurbo as optional backends when they add value.
 
 Publishing + Analytics Layer v1 is now added through `playbooks/instagram-publishing-analytics-layer.md`, `agents/instagrow-publishing-operator.md`, `sops/publishing-run.md`, publishing/analytics templates, and local data ledgers. It defines Outstand as the primary automation-first adapter, Postiz as the scheduler/calendar adapter, local Markdown/JSONL as the MVP source of truth, and Notion as optional dashboard sync.
 
 Next build targets:
 
-1. Caption/save/follow conversion system inside the Content + MUSE layer.
-2. Concrete automation setup for approved posting, publishing logs, analytics puller, and weekly learning review.
-3. Adapter implementation scripts for Outstand/Postiz.
-4. Analytics + Learning Layer expansion after real post data accumulates.
-5. Optional ManyChat integration notes for comment/DM/link-in-bio funnels.
+1. Local Creative Renderer v0: JSON input → clean narrative carousel PNGs.
+2. Asset-aware renderer path: screenshots/product photos/logos → resource drop and product poster templates.
+3. Caption/save/follow conversion system inside the Content + MUSE layer.
+4. Concrete automation setup for approved posting, publishing logs, analytics puller, and weekly learning review.
+5. Adapter implementation scripts for Outstand/Postiz.
+6. Analytics + Learning Layer expansion after real post data accumulates.
+7. Optional ManyChat integration notes for comment/DM/link-in-bio funnels.
 
 This repo is designed to evolve as GrowthForge develops stronger Instagram systems and real account data comes in.
+

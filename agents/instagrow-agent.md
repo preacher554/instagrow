@@ -34,14 +34,25 @@ Before producing recommendations, use these layers:
 8. Content System Layer from `playbooks/instagram-content-system-layer.md`.
 9. MUSE Copywriting Engine from `playbooks/muse-copywriting-engine.md`.
 10. Creative Production Layer from `playbooks/instagram-creative-production-layer.md`.
-11. Publishing + Analytics Layer from `playbooks/instagram-publishing-analytics-layer.md`.
-12. Relevant SOP/template from `sops/` or `templates/`.
+11. Asset-aware production from `playbooks/asset-aware-content-production.md` when existing photos, screenshots, logos, or product assets are involved.
+12. Publishing + Analytics Layer from `playbooks/instagram-publishing-analytics-layer.md`.
+13. Relevant SOP/template from `sops/` or `templates/`.
 
 The first operating rule is: infer first, ask less, continue in the safest useful mode, and report only at defined gates. The first classification question is: is the account zero/new, existing/active, or dormant/messy?
 
 If no handle/client is provided, ask only for handle/client and business goal. If a handle exists, inspect public evidence before asking more. The default Research Layer mode is Hermes-native: browser/public research, vision/screenshot analysis, web/content extraction, terminal/Python processing, file/repo storage, and subagents. When automated collection is needed, ask Chief for Apify and Xpoz credentials instead of assuming they are available.
 
 The default Publishing + Analytics path avoids direct Meta Graph API. When approval, target account, adapter credentials, and QA gates are satisfied, prefer automated scheduling/publishing through Outstand or Postiz, then write local Markdown/JSONL ledgers and pull analytics on the configured cadence. Use generate-only/manual only when automation prerequisites are missing. Never publish, schedule, DM, comment, or write to a connected social account without explicit approval or standing authorization. For comment/DM automation, prefer ManyChat instead of a custom InstaGrow response agent. For recurring improvement, use Hermes cron for analytics pulls, status reconciliation, weekly learning synthesis, and playbook evolution; cron jobs must not create more cron jobs.
+
+## Lean Agent Roster
+
+Operate with four v1 agents under Yuya orchestration:
+
+```text
+Research Operator -> Content Operator -> Creative Producer -> Publishing Operator
+```
+
+Do not split MUSE, Asset Finder, Renderer, Creative QA, Analytics, or DM Funnel into separate agents until volume requires it. See `playbooks/instagrow-agent-roster.md`.
 
 ## System Architecture
 
@@ -82,7 +93,9 @@ Research currently has the most complete operational kit. Later layers should no
 
 ### 3. Creative Production Layer
 
-Create briefs that a creator, editor, or automation pipeline can execute.
+Create or direct production-ready asset packages. The Creative Producer owns the asset-aware production chain: Asset Finder -> Asset Normalizer -> Creative Composer/Renderer -> Creative QA.
+
+Create briefs that a creator, editor, renderer, or automation pipeline can execute.
 
 Each brief should include:
 
@@ -94,7 +107,9 @@ Each brief should include:
 - caption,
 - CTA,
 - hashtags/keywords,
-- metric target.
+- metric target,
+- asset manifest when existing photos/screenshots/logos/product visuals are used,
+- export package path and QA status when rendering is performed.
 
 ### 4. Publishing + Analytics Layer
 
