@@ -35,8 +35,9 @@ Load this skill when asked to:
 - create content briefs, Reels, carousels, Stories, or MUSE copy packages,
 - turn content briefs into creative-production packages,
 - design publishing, scheduling, analytics, or learning loops,
+- configure automation-first posting, local logging, analytics pulling, and status reconciliation,
 - decide which API credentials/adapters are needed for InstaGrow automation,
-- design Hermes cron loops for recurring signal watching, analytics pulls, weekly learning synthesis, or playbook evolution.
+- design Hermes cron loops for automated publishing/status reconciliation, analytics pulls, weekly learning synthesis, or playbook evolution.
 
 Do not use this as a replacement for account-specific evidence. It defines the operating system; the agent still needs actual account/research data.
 
@@ -50,7 +51,7 @@ Cron Learning Loop
 2. Content System Layer + MUSE Copywriting
 3. Creative Production Layer
 4. Publishing + Analytics Layer
-5. Engagement Layer
+5. Optional ManyChat Engagement / CTA Automation Layer
 6. Analytics + Learning Layer
 ```
 
@@ -77,6 +78,8 @@ agents/instagrow-research-operator.md
 agents/instagrow-content-operator.md
 agents/instagrow-creative-producer.md
 agents/instagrow-publishing-operator.md
+sops/automation-setup.md when automation-first posting/logging/analytics is involved
+templates/automation-config.md for per-account/client automation settings
 ```
 
 Use `sops/` and `templates/` for execution artifacts, not ad-hoc formats.
@@ -100,16 +103,17 @@ Report to Yuya at intake blockers, routing gate, strategy gate, production gate,
 
 ### Cron Learning Loop
 
-Use `playbooks/instagrow-cron-learning-loop.md` when the system needs scheduled learning. Cron jobs should make InstaGrow smarter by observing signals, pulling analytics, synthesizing weekly learnings, and proposing durable playbook updates. They must not publish, schedule, DM, comment, or recursively create jobs without explicit authorization.
+Use `playbooks/instagrow-cron-learning-loop.md` when the system needs scheduled learning. Cron jobs should make InstaGrow smarter by scheduling approved content, reconciling publishing status, pulling analytics, synthesizing weekly learnings, and proposing durable playbook updates. They may publish/schedule only with explicit approval or standing authorization, verified adapter credentials, account IDs, quota, QA, and fallback rules. They must not DM/comment or recursively create jobs.
 
-Minimum viable recurring setup:
+Automation-first recurring setup after a real account and adapter credentials exist:
 
 ```text
+Automated Publisher / Status Reconciler — every 15-60 min while scheduled posts are active
+Post Analytics Puller — hourly/daily depending on active posts and adapter limits
 Weekly Learning Synthesizer — every Monday 09:00 WIB
-Monthly Playbook Evolution Reviewer — first day of month 10:00 WIB
 ```
 
-Add Daily Signal Watcher and Post Analytics Puller only after real account lists, publishing logs, or analytics credentials exist.
+Add Monthly Playbook Evolution after several weeks of real data. Add Daily Signal Watcher only after competitor/niche monitoring is worth the noise.
 
 ### Account Routing
 
@@ -185,6 +189,7 @@ Preferred adapters:
 Primary: Outstand.so
 Secondary: Postiz.com
 Fallback: generate-only/manual publishing package
+Comment/DM automation: ManyChat.com
 ```
 
 Credentials:
@@ -195,6 +200,13 @@ POSTIZ_API_KEY
 POSTIZ_BASE_URL optional
 NOTION_API_KEY optional
 NOTION_DATABASE_ID optional
+```
+
+Automation default:
+
+```text
+automate posting/logging/analytics when approval + credentials + QA + quota are satisfied
+manual/generate-only only when prerequisites are missing
 ```
 
 Storage default:
@@ -249,6 +261,7 @@ Before finalizing InstaGrow work:
 - [ ] Content decision maps to a pillar and metric target.
 - [ ] Copy/media/creative/publishing responsibilities are separated.
 - [ ] Publishing adapter is explicit: manual, Outstand, or Postiz.
+- [ ] Automation mode is explicit: approval_required, approved_once, or standing_authorization.
 - [ ] Analytics storage is explicit: local files or Notion sync.
 - [ ] Timezone is Asia/Jakarta / WIB.
 - [ ] Required report/approval gate has been handled.
@@ -262,3 +275,4 @@ Before finalizing InstaGrow work:
 3. **Treating local files as inferior to dashboards.** Local Markdown/JSONL is the MVP source of truth; Notion is optional dashboard sync.
 4. **Mixing strategy and fabrication.** Content System decides what/why; Creative Production builds assets; Publishing executes and logs.
 5. **Reporting raw metrics only.** Analytics must produce a decision: scale, rewrite, change format, follow up, retire, or wait.
+6. **Building custom DM/comment automation too early.** Use ManyChat for MVP comment/DM flows; keep InstaGrow focused on content, captions, publishing, logging, analytics, and learning.

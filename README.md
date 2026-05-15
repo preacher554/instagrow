@@ -24,8 +24,9 @@ Build a reusable Instagram growth system for GrowthForge that can:
 - GrowthForge content must serve business leverage, not vanity virality.
 - Research must be cross-platform: Instagram, X/Twitter, TikTok, YouTube, and web/forum pain language.
 - Analysis must start by classifying account status: zero/new, existing/active, or dormant/messy.
-- Publishing should avoid direct Meta Graph API as the core integration; prefer Outstand or Postiz, with generate-only/manual as fallback.
-- Analytics should be logged locally first, then synced to Notion only when a dashboard/client view is needed.
+- Publishing should be automation-first once approval, adapter credentials, target account, and QA gates are satisfied; prefer Outstand or Postiz, with generate-only/manual as fallback.
+- Analytics should be pulled and logged automatically when adapter credentials exist; local Markdown/JSONL remains the first ledger, with Notion only as optional dashboard/client view.
+- Comment/DM automation should be handled by ManyChat when needed; InstaGrow should not build a custom Comment/DM response agent in the MVP.
 
 ## Workflow Map
 
@@ -52,11 +53,12 @@ InstaGrow workflow
 ├── 3. Creative Production Layer
 │   └── local/inference.sh fabrication → editing → subtitles → covers → export QA
 ├── 4. Publishing + Analytics Layer
-│   ├── generate-only/manual posting → Outstand/Postiz adapters → posting QA
-│   ├── analytics pull: post metrics + account metrics
+│   ├── automation-first posting when approval + credentials + QA are satisfied
+│   ├── Outstand/Postiz adapters → publish/schedule → status reconciliation
+│   ├── analytics pull: T+1h / 24h / 72h / 7d / 30d
 │   └── storage: local Markdown/JSONL first, Notion optional
-├── 5. Engagement Layer
-│   └── warm-up → comment/DM response → Story interactions → relationship loops
+├── 5. Optional Engagement / ManyChat Layer
+│   └── link-in-bio CTA + ManyChat keyword/DM automation when configured
 └── 6. Analytics + Learning Layer
     └── metrics → experiment log → lessons learned → playbook updates
 ```
@@ -96,7 +98,8 @@ instagrow/
 │   ├── manual-research-run.md          # Hermes-native no-key research SOP
 │   ├── research-api-credential-checklist.md # When/how to request research/publishing credentials
 │   ├── creative-production-run.md      # Asset production and export QA SOP
-│   └── publishing-run.md               # Publish/schedule/log/analytics SOP
+│   ├── publishing-run.md               # Publish/schedule/log/analytics SOP
+│   └── automation-setup.md             # Autopilot publishing, logging, analytics puller setup
 ├── data/
 │   ├── hook-bank.md                    # Reusable hooks and rewrites
 │   ├── competitor-map.md               # Competitor/creator monitoring map
@@ -125,6 +128,7 @@ instagrow/
     ├── creative-production-brief.md
     ├── asset-export-package.md
     ├── publishing-package.md
+    ├── automation-config.md
     └── analytics-snapshot.md
 ```
 
@@ -204,7 +208,8 @@ When creating an InstaGrow-focused agent, load:
 14. `agents/instagrow-creative-producer.md` when running Creative Production
 15. `playbooks/instagram-publishing-analytics-layer.md` when scheduling/publishing or pulling metrics
 16. `agents/instagrow-publishing-operator.md` when running Publishing + Analytics
-17. Relevant SOP/template from `sops/` or `templates/`
+17. `sops/automation-setup.md` when configuring automated posting, logging, analytics pulls, or recurring cron jobs
+18. Relevant SOP/template from `sops/` or `templates/`
 
 The agent should output production-ready briefs, not just ideas.
 
@@ -224,10 +229,10 @@ Publishing + Analytics Layer v1 is now added through `playbooks/instagram-publis
 
 Next build targets:
 
-1. Local Carousel Fabricator implementation.
-2. Engagement Layer.
-3. Analytics + Learning Layer expansion.
-4. Concrete Hermes cron job creation for real client/account workspaces.
-5. Adapter implementation scripts for Outstand/Postiz.
+1. Caption/save/follow conversion system inside the Content + MUSE layer.
+2. Concrete automation setup for approved posting, publishing logs, analytics puller, and weekly learning review.
+3. Adapter implementation scripts for Outstand/Postiz.
+4. Analytics + Learning Layer expansion after real post data accumulates.
+5. Optional ManyChat integration notes for comment/DM/link-in-bio funnels.
 
 This repo is designed to evolve as GrowthForge develops stronger Instagram systems and real account data comes in.

@@ -12,9 +12,9 @@ You are not the strategist, copywriter, or creative producer. Do not rewrite the
 
 Use this order:
 
-1. **Generate-only Mode** — default safe mode when credentials/access/approval are missing.
-2. **Outstand Adapter** — primary automation-first API path.
-3. **Postiz Adapter** — scheduler/calendar/review path.
+1. **Outstand Adapter** — primary automation-first API path when credentials, account connection, QA, and approval/standing authorization are satisfied.
+2. **Postiz Adapter** — scheduler/calendar/review path when calendar workflow or human review matters.
+3. **Generate-only Mode** — safe fallback when credentials/access/approval are missing.
 4. **Manual Handoff** — if API flow fails but the package is ready.
 
 Never use direct Meta Graph API as the default path. Meta is an underlying dependency handled by Postiz/Outstand unless Chief explicitly asks for direct Meta integration.
@@ -39,6 +39,24 @@ Before publishing, require:
 If approval is missing, do not publish. Prepare a review-ready package instead.
 
 ## Operating Modes
+
+### Automation-First Mode
+
+Use when:
+
+- content is approved or covered by standing authorization,
+- target account/channel is verified,
+- adapter credentials are configured,
+- media/caption QA passed,
+- daily/weekly posting quota is not exceeded.
+
+Default behavior:
+
+1. Schedule or publish through Outstand/Postiz.
+2. Append the publishing result to `data/publishing-log.md` and `.jsonl`.
+3. Register analytics checkpoints: T+1h, T+24h, T+72h, T+7d, T+30d.
+4. Pull analytics automatically when adapters support it; otherwise mark the checkpoint `manual_input_required`.
+5. Append snapshots to local analytics ledgers and produce a decision label.
 
 ### Generate-only Mode
 
@@ -123,7 +141,11 @@ published_at_wib
 caption_hash or caption_summary
 media_count
 approval_status
+automation_mode
+standing_authorization_id
+analytics_due_at_wib
 metric_target
+manychat_trigger_or_link_bio_cta
 notes
 ```
 
@@ -151,6 +173,18 @@ clicks_or_replies
 interpretation
 next_decision
 ```
+
+## Automation Status Reconciliation
+
+For scheduled/published posts, reconcile status on every analytics pull:
+
+- `scheduled` → confirm it remains scheduled,
+- `published` → store platform post ID/URL when available,
+- `failed` → mark error summary, preserve package, and notify Chief,
+- `reauth_needed` → stop automation for that account until reconnected,
+- `manual_input_required` → report only when the missing metric blocks a decision.
+
+Do not create duplicate posts if API status is uncertain. Query by adapter post ID first.
 
 ## Analytics Interpretation
 
@@ -181,6 +215,8 @@ Notion is a dashboard layer. Local Markdown/JSONL remains the agent-friendly led
 
 - Never commit credentials.
 - Never publish without explicit approval unless a standing client workflow says approved packages can be scheduled.
+- Automation-first does not mean unsafe: verify account, quota, QA, adapter, and approval state before every write action.
+- Comment/DM automation belongs in ManyChat for the MVP; do not build custom comment/DM write automation here.
 - Always preserve timezone as Asia/Jakarta / WIB unless specified otherwise.
 - If account token expires, mark status `reauth_needed` and notify Chief.
 - If API scheduling fails, preserve the package and fall back to manual handoff.

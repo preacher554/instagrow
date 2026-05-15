@@ -4,7 +4,7 @@
 
 This layer defines how InstaGrow can use Hermes cron jobs to keep learning from accounts, content performance, audience signals, and workflow outcomes without needing Yuya to manually restart the thinking loop every time.
 
-The cron loop is not for uncontrolled autonomous posting. It is for compounding intelligence:
+The cron loop is not for uncontrolled autonomous posting. In the MVP it supports automation under explicit approval/standing authorization: scheduled publishing/status reconciliation, analytics pulls, local ledger updates, and weekly learning. Its core purpose is compounding intelligence:
 
 ```text
 observe → summarize → decide → update memory/artifacts → recommend next action
@@ -25,7 +25,7 @@ They should:
 
 They should not:
 
-- publish, schedule, DM, comment, or change external social accounts without approval,
+- publish, schedule, DM, comment, or change external social accounts without explicit approval or standing authorization,
 - recursively create more cron jobs,
 - spam Yuya with low-signal reports,
 - overwrite strategic playbooks from one weak data point,
@@ -74,7 +74,32 @@ Default output:
 Only report if meaningful change is found.
 ```
 
-### 2. Analytics Puller
+### 2. Automated Publisher / Status Reconciler
+
+Purpose: publish/schedule approved packages and reconcile adapter/platform status.
+
+Use for:
+
+- approved content packages,
+- standing posting authorization,
+- Outstand/Postiz scheduled queues,
+- failed/uncertain post status recovery,
+- local publishing ledger updates.
+
+Recommended cadence:
+
+```text
+Every 15-60 min while active scheduled posts exist, or daily for low-volume accounts
+```
+
+Default output:
+
+- update `data/publishing-log.md`,
+- update `data/publishing-log.jsonl`,
+- record `scheduled`, `published`, `failed`, `reauth_needed`, or `manual_input_required`,
+- report only if a live action is blocked, fails, or needs approval.
+
+### 3. Analytics Puller
 
 Purpose: pull or request post/account performance snapshots after publishing.
 
@@ -99,7 +124,7 @@ Default output:
 - update `data/account-metrics-log.md` when available,
 - produce decision: `scale`, `rewrite`, `change_format`, `follow_up`, `retire`, or `wait`.
 
-### 3. Weekly Learning Synthesizer
+### 4. Weekly Learning Synthesizer
 
 Purpose: turn a week of activity into operating intelligence.
 
@@ -125,7 +150,7 @@ Default output:
 - updates proposed for hook bank, content opportunities, copy variant log, and experiment log,
 - next-week recommended content bets.
 
-### 4. Playbook Evolution Reviewer
+### 5. Playbook Evolution Reviewer
 
 Purpose: identify durable lessons that should update SOPs or skills.
 
@@ -157,7 +182,7 @@ Do not patch playbooks from a single weak observation unless the issue is a clea
 1. Cron jobs must be self-contained.
 2. Cron jobs must load the relevant InstaGrow skill/playbook context.
 3. Cron jobs must not recursively schedule more cron jobs.
-4. Cron jobs must not publish or schedule live content unless a standing authorization explicitly exists.
+4. Cron jobs may publish/schedule only when a standing authorization or explicit approval exists and the job verifies target account, adapter credentials, quota, QA status, and fallback behavior.
 5. Cron jobs should report only meaningful deltas, blocked states, or decisions needing Yuya.
 6. Cron jobs must preserve source links, timestamps, and assumptions.
 7. Cron jobs must use Asia/Jakarta / WIB for schedules and reporting.
@@ -229,7 +254,50 @@ Output:
 - recommended next action.
 ```
 
-### Job B — Post Analytics Puller
+### Job B — Automated Publisher / Status Reconciler
+
+Schedule:
+
+```text
+Every 15-60 min while scheduled posts are active, or daily for low-volume accounts
+```
+
+Mode:
+
+```text
+repo_update or live_publish only with standing authorization
+```
+
+Prompt skeleton:
+
+```text
+You are the InstaGrow Automated Publisher / Status Reconciler.
+
+Load and follow:
+- playbooks/instagrow-execution-gates-guardrails.md
+- playbooks/instagram-publishing-analytics-layer.md
+- playbooks/instagrow-cron-learning-loop.md
+- sops/automation-setup.md
+
+Task:
+Review approved publishing packages and scheduled posts. If standing authorization and adapter credentials are configured, schedule/publish due content via Outstand/Postiz. Reconcile existing adapter statuses and update local publishing ledgers.
+
+Rules:
+- Do not publish/schedule unless approval or standing authorization is explicit.
+- Verify target account, quota, QA status, adapter credentials, and timezone before write actions.
+- Do not DM/comment; ManyChat owns comment/DM automation.
+- Do not duplicate posts when API state is uncertain; query adapter post ID first.
+- Report only blocked writes, failures, reauth_needed, or approval-needed items.
+
+Output:
+- posts scheduled/published,
+- status reconciled,
+- logs updated,
+- analytics checkpoints registered,
+- blockers or next actions.
+```
+
+### Job C — Post Analytics Puller
 
 Schedule:
 
@@ -267,7 +335,7 @@ Output:
 - recommended action: scale/rewrite/change_format/follow_up/retire/wait.
 ```
 
-### Job C — Weekly Learning Synthesizer
+### Job D — Weekly Learning Synthesizer
 
 Schedule:
 
@@ -311,7 +379,7 @@ Output:
 - questions/blockers for Yuya only if needed.
 ```
 
-### Job D — Monthly Playbook Evolution Reviewer
+### Job E — Monthly Playbook Evolution Reviewer
 
 Schedule:
 
@@ -396,11 +464,12 @@ Do not save temporary progress, stale task outcomes, one-off PR/commit numbers, 
 
 ## Minimum Viable Cron Setup
 
-Start with two jobs:
+For the current automation-first MVP, start with three jobs once a real account and adapter credentials exist:
 
 ```text
-1. Weekly Learning Synthesizer — every Monday 09:00 WIB
-2. Monthly Playbook Evolution Reviewer — first day of month 10:00 WIB
+1. Automated Publisher / Status Reconciler — every 15-60 min while scheduled posts are active
+2. Post Analytics Puller — hourly/daily depending on active posts and adapter limits
+3. Weekly Learning Synthesizer — every Monday 09:00 WIB
 ```
 
-Add Daily Signal Watcher and Post Analytics Puller only after there are real accounts, competitor lists, publishing logs, or analytics credentials to monitor.
+Add Monthly Playbook Evolution after several weeks of real data. Add Daily Signal Watcher only after there are competitor lists or niche signals worth monitoring.

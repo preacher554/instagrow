@@ -8,6 +8,8 @@
 - Platform:
 - Format:
 - Adapter preference: `outstand | postiz | manual`
+- Automation mode: `manual | approval_required | approved_once | standing_authorization`
+- Standing authorization ID / note:
 - Approval status: `approved | needs_review | rejected`
 
 ## Schedule
@@ -55,6 +57,13 @@
 - Collaborators / tags:
 - Location:
 
+## CTA / Funnel
+
+- Primary CTA: `save | follow | link_in_bio | comment_keyword | manychat_dm | other`
+- Link-in-bio destination:
+- ManyChat keyword / flow name:
+- Lead magnet / offer reference:
+
 ## Metric Target
 
 - Primary metric:
@@ -68,7 +77,10 @@
 - Story repost text:
 - Post-publish engagement notes:
 
-## Analytics Pull Plan
+## Automation / Analytics Pull Plan
+
+- Status reconciliation due:
+- Auto-pull enabled: `yes | no | manual_input_required`
 
 - T+1h:
 - T+24h:

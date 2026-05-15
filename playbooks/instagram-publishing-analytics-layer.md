@@ -4,7 +4,7 @@
 
 This layer turns approved InstaGrow content packages into scheduled/published posts, then pulls performance data back into the learning loop.
 
-It deliberately avoids direct Meta Graph API as the primary integration path. InstaGrow should treat Meta as an underlying dependency handled by a publishing platform, not as the core adapter that GrowthForge maintains directly.
+It deliberately avoids direct Meta Graph API as the primary integration path. InstaGrow should treat Meta as an underlying dependency handled by a publishing platform, not as the core adapter that GrowthForge maintains directly. Once approval, adapter credentials, target account, quota, and QA gates are satisfied, this layer should behave automation-first: schedule/publish, log, reconcile status, pull analytics, and feed learning loops automatically.
 
 ## Default Architecture
 
@@ -20,6 +20,11 @@ Operational routes:
 
 ```text
 Publishing + Analytics Layer
+├── Automation-First Mode
+│   ├── approved package → Outstand/Postiz → schedule/publish
+│   ├── write publishing ledgers
+│   ├── reconcile post status
+│   └── pull analytics checkpoints automatically
 ├── Generate-only Mode
 │   └── export caption, assets, first comment, hashtags, posting notes
 ├── Outstand Adapter
@@ -42,9 +47,29 @@ Publishing + Analytics Layer
 
 ## Adapter Priority
 
-### 1. Generate-only Mode
+### 1. Automation-First Mode
 
-Use when credentials are missing, account access is unclear, or Chief wants manual posting.
+Use when all are true:
+
+- the content package is approved or covered by standing authorization,
+- target account/channel ID is known and connected,
+- Outstand or Postiz credentials are configured,
+- media and caption QA passed,
+- posting quota/cadence rules allow the action,
+- fallback behavior is defined if the adapter fails.
+
+Expected behavior:
+
+- publish or schedule through the selected adapter,
+- record adapter ID, platform ID/URL, timestamps, and status,
+- create analytics checkpoint plan,
+- automatically pull metrics when each checkpoint is due,
+- update local Markdown/JSONL ledgers,
+- report only failures, blocked credentials, or meaningful decision thresholds.
+
+### 2. Generate-only Mode
+
+Use when credentials are missing, account access is unclear, approval is missing, QA fails, or Chief wants manual posting.
 
 Output must include:
 
@@ -60,7 +85,7 @@ Output must include:
 
 This mode is never a failure. It is the safe MVP path.
 
-### 2. Outstand — Primary API Adapter
+### 3. Outstand — Primary API Adapter
 
 Use Outstand when InstaGrow needs an automation-first publishing and analytics backend.
 
@@ -118,7 +143,7 @@ Storage behavior:
 - append analytics snapshots to local JSONL/Markdown,
 - sync summarized rows to Notion only if configured.
 
-### 3. Postiz — Scheduler / Calendar Adapter
+### 4. Postiz — Scheduler / Calendar Adapter
 
 Use Postiz when InstaGrow needs a visual calendar, review/approval workflow, broad social-network coverage, or self-hostable scheduler.
 
@@ -165,6 +190,17 @@ Postiz note:
 - Docs mention a Public API rate limit of 30 requests/hour.
 - API uses `integration`; UI calls the same object `channel`.
 - It can be cloud-hosted or self-hosted.
+
+## ManyChat Boundary
+
+InstaGrow MVP should not build a custom Comment/DM Response agent. Use ManyChat for comment keyword triggers, DM delivery, segmentation, and link/lead capture when needed. Publishing packages may include:
+
+- link-in-bio CTA,
+- ManyChat keyword trigger,
+- resource/lead magnet name,
+- landing page or automation flow reference.
+
+InstaGrow records these fields for analytics, but ManyChat owns the actual DM/comment automation.
 
 ## Storage Strategy
 
@@ -278,6 +314,16 @@ For Instagram, priority interpretation:
 - Carousels: saves, swipes if available, shares, comments.
 - Stories: replies, sticker taps, link clicks, exits.
 - Conversion content: DMs, clicks, lead intent, offer replies.
+
+## Status Reconciliation
+
+Every analytics pull should also reconcile post status:
+
+- scheduled still exists,
+- published URL/platform ID is present,
+- failed/error states are logged,
+- expired token/account health issues are escalated,
+- uncertain API states are queried before retrying to avoid duplicate posts.
 
 ## Learning Loop
 

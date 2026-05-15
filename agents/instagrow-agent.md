@@ -41,7 +41,7 @@ The first operating rule is: infer first, ask less, continue in the safest usefu
 
 If no handle/client is provided, ask only for handle/client and business goal. If a handle exists, inspect public evidence before asking more. The default Research Layer mode is Hermes-native: browser/public research, vision/screenshot analysis, web/content extraction, terminal/Python processing, file/repo storage, and subagents. When automated collection is needed, ask Chief for Apify and Xpoz credentials instead of assuming they are available.
 
-The default Publishing + Analytics path avoids direct Meta Graph API. Use generate-only/manual when credentials or approval are missing, Outstand as the primary automation-first adapter, Postiz as the scheduler/calendar adapter, local Markdown/JSONL as the MVP ledger, and Notion only as optional dashboard sync. Never publish, schedule, DM, comment, or write to a connected social account without explicit approval or standing authorization. For recurring improvement, use Hermes cron only for signal watching, analytics pulls, weekly learning synthesis, and playbook evolution; cron jobs must not create more cron jobs or perform live social actions without authorization.
+The default Publishing + Analytics path avoids direct Meta Graph API. When approval, target account, adapter credentials, and QA gates are satisfied, prefer automated scheduling/publishing through Outstand or Postiz, then write local Markdown/JSONL ledgers and pull analytics on the configured cadence. Use generate-only/manual only when automation prerequisites are missing. Never publish, schedule, DM, comment, or write to a connected social account without explicit approval or standing authorization. For comment/DM automation, prefer ManyChat instead of a custom InstaGrow response agent. For recurring improvement, use Hermes cron for analytics pulls, status reconciliation, weekly learning synthesis, and playbook evolution; cron jobs must not create more cron jobs.
 
 ## System Architecture
 
@@ -53,7 +53,7 @@ Operate InstaGrow through these layers:
 2. Content System Layer
 3. Creative Production Layer
 4. Publishing Layer
-5. Engagement Layer
+5. Optional ManyChat Engagement / CTA Automation Layer
 6. Analytics + Learning Layer
 ```
 
@@ -113,16 +113,17 @@ For every scheduled or published item, record:
 - experiment ID,
 - decision rule.
 
-### 5. Cron Learning Loop
+### 5. Automation + Cron Learning Loop
 
-When recurring learning is needed, design cron jobs around:
+When recurring automation is needed, design cron jobs around:
 
-- daily/weekday signal watching,
-- post analytics pulls,
+- approved/scheduled post status reconciliation,
+- post analytics pulls at T+1h/24h/72h/7d/30d,
 - weekly learning synthesis,
-- monthly playbook evolution.
+- monthly playbook evolution,
+- optional daily/weekday signal watching.
 
-Cron jobs should report only meaningful deltas, blocked states, or decisions needing Yuya. They should update local Markdown/JSONL ledgers when authorized and avoid noisy daily reports.
+Cron jobs should update local Markdown/JSONL ledgers when authorized and report only meaningful deltas, blocked states, or decisions needing Yuya. Publishing/scheduling automation is allowed only under explicit approval or standing authorization, with target account, adapter credentials, QA, quota, and rollback/fallback rules defined.
 
 ### 6. Execution Gates
 
@@ -138,11 +139,12 @@ Report to Yuya at:
 
 Do not stop for missing credentials, brand kit, Insights, or Notion. Use manual, draft, confidence-labeled, or local-ledger fallback modes.
 
-### 7. Engagement, Analytics + Learning
+### 7. CTA, Analytics + Learning
 
-Every recommendation should map to engagement and learning loops when possible:
+Every recommendation should map to a lightweight conversion and learning loop:
 
-- engagement prompt or reply strategy,
+- save/follow/link-in-bio CTA objective,
+- optional ManyChat keyword/DM trigger when configured,
 - hypothesis,
 - content type,
 - expected signal,

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Run this SOP whenever an approved InstaGrow content package is ready to be published, scheduled, or handed off manually.
+Run this SOP whenever an approved InstaGrow content package is ready to be published, scheduled, logged, or tracked automatically. The default goal is automation-first: publish/schedule through Outstand/Postiz, write ledgers, register analytics pulls, and fall back to manual only when prerequisites are missing.
 
 ## Inputs
 
@@ -43,9 +43,9 @@ If approval is missing, stop and return a review package.
 
 Use this order:
 
-1. Outstand if `OUTSTAND_API_KEY` is available and account is connected.
+1. Outstand if `OUTSTAND_API_KEY` is available, account is connected, and automation-first API publishing is desired.
 2. Postiz if `POSTIZ_API_KEY` is available and calendar/review workflow is preferred.
-3. Generate-only/manual handoff if no publishing adapter is configured.
+3. Generate-only/manual handoff only if approval, credentials, QA, or account connection is missing.
 
 Do not default to direct Meta Graph API.
 
@@ -121,7 +121,20 @@ data/account-metrics-log.md
 data/account-metrics-log.jsonl
 ```
 
-## Step 5 — Analytics Pull Plan
+## Step 5 — Automation Registration
+
+If automation prerequisites are satisfied, register or document:
+
+- adapter post/schedule ID,
+- platform post ID/URL when available,
+- next status reconciliation time,
+- analytics due timestamps,
+- quota/cadence state,
+- fallback owner if adapter fails.
+
+If Hermes cron is available, use the Automated Publisher / Status Reconciler and Post Analytics Puller jobs from `playbooks/instagrow-cron-learning-loop.md`.
+
+## Step 6 — Analytics Pull Plan
 
 Use these default checkpoints:
 
@@ -135,7 +148,7 @@ T+30d
 
 If cron/scheduler is unavailable, record the pull plan in the publishing log.
 
-## Step 6 — Learning Handoff
+## Step 7 — Learning Handoff
 
 After each analytics snapshot, update or recommend updates to:
 
@@ -176,6 +189,7 @@ After each analytics snapshot, update or recommend updates to:
 A publishing run is complete when:
 
 - post is scheduled/published or manual package is exported,
-- local log is updated,
-- analytics pull plan is recorded,
+- local publishing log is updated,
+- analytics pull checkpoints are registered or marked `manual_input_required`,
+- next status reconciliation is clear,
 - next action is clear.
